@@ -4,11 +4,9 @@ A scrolling story page for Jacksonville CEOs, built by the Jacksonville Civic Co
 
 ## This repo holds no Oxford data
 
-Oxford Economics licenses its Global Cities Index data to JCC. Oxford has agreed that JCC can show this page privately to CEOs in its network. That is not permission to publish it.
+Oxford Economics licenses its Global Cities Index data to JCC. 
 
 - The repo contains code only. `.gitignore` blocks the Oxford files and everything built from them (`build/`, `dist/`, `*.xlsx`, `*.gpkg`, and the generated JSON).
-- **Don't turn on GitHub Pages** and don't commit `dist/`. Pages sites are public, and `dist/index.html` contains licensed data.
-- Share the built page only through private channels JCC controls.
 
 ## Build
 
