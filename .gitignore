@@ -1,0 +1,12 @@
+# Oxford Economics data is licensed to JCC. Never commit it or anything built from it.
+build/
+dist/
+*.xlsx
+*.gpkg
+*.csv
+conn_data.json
+model_params.json
+story_data.json
+city_xy.json
+.DS_Store
+__pycache__/

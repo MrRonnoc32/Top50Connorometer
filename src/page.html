@@ -1,0 +1,380 @@
+<title>Path to the Top 50</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Mono:wght@500;600&family=Public+Sans:wght@400;600;700&display=swap">
+<style>
+/* Layout: a sticky globe that turns as story steps scroll past, then a full-width "97th" moment with a 845-city rank strip,
+   then the calculator (levers left, sticky rank panel right; stacks on phones).
+   Light only by the owner's choice: a deliberate single theme with every color set explicitly. Text pairs meet WCAG AAA (7:1). */
+:root{
+  color-scheme: light;
+  --bg:#F3F6F6; --surface:#FFFFFF; --tint:#E3ECEE; --ocean:#E6EEF0; --land:#C9D6D9;
+  --ink:#0E2226; --ink-2:#33474C; --rule:#B9C8CB; --rule-soft:#DCE5E7;
+  --accent:#084C57; --accent-mid:#2F7480; --accent-soft:#CFE3E7; --dot:#7E979C;
+  --jax:#7A3D00; --jax-bright:#C25A0E; --jax-soft:#F5E4D4;
+  --good:#12542A;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"Public Sans","Segoe UI",Roboto,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;padding-inline:16px;padding-block:0}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.02;text-wrap:balance}
+p{margin:0}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--ink-2)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1240px;margin-inline:auto}
+.topbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;padding-block:14px}
+.brand{font-family:var(--f-display);font-weight:800;font-stretch:80%;font-size:1.05rem;letter-spacing:.02em}
+.badge{font-size:.8rem;font-weight:600;background:var(--jax-soft);border:1px solid var(--jax);border-radius:999px;padding:3px 12px;color:var(--ink)}
+
+/* ---------- scrolly globe ---------- */
+.scrolly{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,440px);gap:24px;position:relative}
+.stage{position:sticky;top:env(safe-area-inset-top,0px);height:100vh;display:flex;align-items:center;justify-content:center}
+#globe{width:100%;max-width:760px;aspect-ratio:1/1;max-height:92vh;display:block}
+.steps{padding-block:12vh 30vh;display:flex;flex-direction:column;gap:62vh}
+.step{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:22px 24px;box-shadow:0 10px 30px rgb(14 34 38 / .07);opacity:.55;transition:opacity .4s}
+.step.on{opacity:1}
+.step h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:900;font-stretch:75%;letter-spacing:-.01em;margin-bottom:14px}
+.step h1 em{font-style:normal;color:var(--accent)}
+.step h2{font-size:1.7rem;font-weight:800;font-stretch:80%;margin-bottom:10px}
+.step p{color:var(--ink);max-width:46ch}
+.step p+p{margin-top:10px}
+.key{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;font-size:.88rem;color:var(--ink-2)}
+.key span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:11px;height:11px;border-radius:50%;display:inline-block}
+.scrollcue{margin-top:16px;font-size:.88rem;color:var(--ink-2)}
+@media (max-width:900px){
+  .scrolly{grid-template-columns:minmax(0,1fr)}
+  .stage{height:62vh;top:0;z-index:0}
+  #globe{width:100%;height:auto;max-width:min(100%,60vh);max-height:60vh}
+  .steps{position:relative;z-index:1;margin-top:-20vh;padding-block:0 24vh;gap:70vh}
+  .step{opacity:1}
+}
+
+/* ---------- 97th ---------- */
+.moment{padding-block:14vh 10vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 56px;align-items:end}
+.big97{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:clamp(9rem,26vw,20rem);line-height:.8;color:var(--jax);letter-spacing:-.03em}
+.big97 sup{font-size:.28em;vertical-align:top;position:relative;top:.35em;margin-left:.04em}
+.moment h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:900;font-stretch:78%}
+.moment p{max-width:52ch;margin-top:14px}
+.moment .q{font-family:var(--f-display);font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:800;font-stretch:80%;color:var(--accent);margin-top:22px;line-height:1.1}
+.strip{grid-column:1/-1;margin-top:28px}
+.strip svg{width:100%;height:auto;display:block;overflow:visible}
+.strip svg text{font-family:var(--f-body);font-size:13px;fill:var(--ink-2)}
+.strip svg .lbl{fill:var(--ink);font-weight:700}
+@media (max-width:820px){.moment{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- calculator ---------- */
+.calc{padding-block:6vh 10vh}
+.calc > header{max-width:70ch;margin-bottom:26px}
+.calc > header h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;font-stretch:76%;margin-bottom:10px}
+.calc-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:28px;align-items:start;width:100%}
+.calc-grid > *{min-width:0}
+@media (max-width:980px){.calc-grid{grid-template-columns:minmax(0,1fr)}}
+.panel{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);background:var(--ink);color:#FFFFFF;border-radius:16px;padding:22px}
+@media (max-width:980px){.panel{order:-1;position:sticky;top:0;z-index:4;border-radius:0 0 14px 14px;padding:14px 16px;margin-inline:-16px}}
+.panel .eyebrow{color:#D3E2E5}
+.rankrow{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.rank{font-family:var(--f-display);font-weight:900;font-stretch:65%;font-size:6rem;line-height:.9}
+.rank.in{color:#9FE0B4}
+.chg{font-family:var(--f-mono);font-weight:600;background:#FFFFFF;color:var(--ink);border-radius:5px;padding:2px 8px;font-size:.95rem}
+.chg.up{color:var(--good)}
+.meter{position:relative;height:14px;border-radius:7px;background:#28444A;margin:16px 0 6px}
+.meter .fill{position:absolute;inset:0 auto 0 0;border-radius:7px;background:#9FE0B4;transition:width .35s}
+.meter .goal{position:absolute;top:-5px;bottom:-5px;width:3px;background:#FFFFFF;border-radius:2px}
+.meterlbl{display:flex;justify-content:space-between;font-size:.8rem;color:#D3E2E5}
+.words{margin-top:14px;font-size:1rem;line-height:1.45}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pbtn{min-height:44px;padding:8px 14px;border-radius:8px;border:2px solid #FFFFFF;background:transparent;color:#FFFFFF;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer}
+.pbtn:hover{background:#1F3A40}
+.pbtn[aria-pressed="true"]{background:#FFFFFF;color:var(--ink)}
+.flagline{margin-top:14px;font-size:.8rem;color:#D3E2E5}
+@media (max-width:980px){.rank{font-size:3.6rem}.words{font-size:.92rem}.flagline{display:none}}
+.groups{display:flex;flex-direction:column;gap:22px}
+.group h3{font-size:1.25rem;font-weight:800;font-stretch:85%;margin-bottom:10px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.group h3 small{font-family:var(--f-body);font-size:.85rem;font-weight:600;color:var(--ink-2)}
+.lever{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.lever.moved{border-color:var(--jax);box-shadow:inset 4px 0 0 var(--jax)}
+.lv-top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.lv-top label{font-weight:700;font-size:1.05rem}
+.lv-top .gain{font-family:var(--f-mono);font-size:.85rem;color:var(--ink-2)}
+.lv-metric{font-size:.88rem;color:var(--ink-2)}
+.lever input[type=range]{width:100%;height:44px;accent-color:var(--jax);margin:2px 0 0}
+.lv-vals{display:flex;justify-content:space-between;gap:10px;font-size:.88rem;flex-wrap:wrap}
+.lv-vals b{font-family:var(--f-mono);font-weight:600}
+.idea{margin-top:8px;font-size:.92rem;background:var(--tint);border-radius:8px;padding:8px 12px}
+.idea strong{color:var(--accent)}
+.rough{font-size:.8rem;color:var(--jax);font-weight:700}
+
+/* ---------- footer ---------- */
+.method{border-top:2px solid var(--ink);padding-block:28px 56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 40px;font-size:.92rem}
+.method h2{font-size:1.4rem;font-weight:800;font-stretch:85%;grid-column:1/-1}
+.method ul{margin:0;padding-left:1.1rem}
+.method li{margin:.3rem 0}
+@media (max-width:820px){.method{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+  <div class="topbar">
+    <span class="brand">JACKSONVILLE CIVIC COUNCIL</span>
+    <span class="badge" role="note">Private: shared with JCC's CEO network</span>
+  </div>
+
+  <section class="scrolly" aria-label="Jacksonville among the world's cities">
+    <div class="stage"><canvas id="globe" role="img" aria-label="A globe of the cities in Oxford Economics' Global Cities Index. The text beside it describes each view."></canvas></div>
+    <div class="steps">
+      <article class="step on" data-step="0">
+        <div class="eyebrow">Oxford Economics Global Cities Index, 2026</div>
+        <h1>The path to the <em>Top 50</em></h1>
+        <p>Every year Oxford Economics ranks the world's 1,000 largest cities on their economies, people, quality of life, environment and governance.</p>
+        <div class="key"><span><i class="sw" style="background:var(--dot)"></i>A city in the index</span></div>
+        <p class="scrollcue">Scroll to follow Jacksonville ↓</p>
+      </article>
+      <article class="step" data-step="1">
+        <div class="eyebrow">Our peers</div>
+        <h2>845 cities our size</h2>
+        <p>The global giants play a different game. We measure Jacksonville against the 845 cities with fewer than 4 million people, from Austin and Raleigh to Lyon, Adelaide and Eindhoven.</p>
+        <div class="key"><span><i class="sw" style="background:var(--dot)"></i>Under 4 million people</span></div>
+      </article>
+      <article class="step" data-step="2">
+        <div class="eyebrow">The Top 50</div>
+        <h2>The 50 that lead the group</h2>
+        <p>The Top 50 cities under 4 million cluster in Western Europe, Australia and North America. Ten are in the US, including Austin, Nashville, Charlotte and Salt Lake City.</p>
+        <div class="key"><span><i class="sw" style="background:var(--accent)"></i>Top 50</span><span><i class="sw" style="background:var(--dot)"></i>The rest</span></div>
+      </article>
+      <article class="step" data-step="3">
+        <div class="eyebrow">Jacksonville</div>
+        <h2>One of five North American cities to watch</h2>
+        <p>In its 2026 index Oxford named Jacksonville one of five North American cities to watch. It climbed 27 places overall in a year, from 161st to 134th of 1,000.</p>
+        <div class="key"><span><i class="sw" style="background:var(--jax-bright)"></i>Jacksonville</span><span><i class="sw" style="background:var(--accent)"></i>Top 50</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="moment" aria-labelledby="mH">
+    <div class="big97" aria-hidden="true">97<sup>th</sup></div>
+    <div>
+      <div class="eyebrow">Among 845 cities under 4 million</div>
+      <h2 id="mH">Jacksonville is already 97th.</h2>
+      <p>That puts Jacksonville ahead of 748 peer cities. Just above it sits Kitchener-Cambridge-Waterloo in Canada; just below, Nantes in France. The 50th spot belongs to Eindhoven, 47 places up.</p>
+      <p class="q">What would it take to get to the Top 50?</p>
+    </div>
+    <div class="strip" id="strip"></div>
+  </section>
+
+  <section class="calc" aria-labelledby="cH">
+    <header>
+      <div class="eyebrow">The Top 50 calculator</div>
+      <h2 id="cH">Move the levers. Watch the rank.</h2>
+      <p>Each slider runs from where Jacksonville is today (0%) to the typical value among the Top 50 (100%). The rank updates as you go. Below each lever is something a company can do about it.</p>
+    </header>
+    <div class="calc-grid">
+      <div class="groups" id="groups"></div>
+      <aside class="panel" aria-labelledby="pH">
+        <div class="eyebrow" id="pH">Jacksonville's rank, cities under 4M</div>
+        <div class="rankrow"><span class="rank num" id="rank">97</span><span class="chg" id="chg">Today</span></div>
+        <div class="meter" aria-hidden="true"><div class="fill" id="fill"></div><div class="goal" id="goal"></div></div>
+        <div class="meterlbl"><span>Today: 97th</span><span>Top 50</span></div>
+        <p class="words" id="words" aria-live="polite"></p>
+        <div class="presets" role="group" aria-label="Starting points">
+          <button class="pbtn" type="button" data-p="half" aria-pressed="false">Close half the gap on the top three</button>
+          <button class="pbtn" type="button" data-p="full" aria-pressed="false">Match the Top 50 on the top three</button>
+          <button class="pbtn" type="button" data-p="reset" aria-pressed="false">Reset</button>
+        </div>
+        <p class="flagline">Ranks are estimates. Oxford doesn't publish its scoring formula, so the slider effects come from curves fitted to its 2026 data.</p>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="method" aria-labelledby="fH">
+    <h2 id="fH">How the calculator works</h2>
+    <ul>
+      <li><b>Data.</b> Oxford Economics Global Cities Index 2026: scores and ranks for 1,000 cities, licensed to JCC. Peers are the 845 cities with fewer than 4 million people in Oxford's own metro populations. With no levers moved, the page reproduces Oxford's 97th exactly.</li>
+      <li><b>Two levels.</b> A fitted curve turns each metric's value into Oxford's 0 to 100 score. Those scores combine into the five pillars and the overall score using weights that reproduce Oxford's published ranks exactly.</li>
+      <li><b>Anchored to Oxford.</b> Every other city keeps its actual 2026 scores. A lever changes only Jacksonville's score, by the amount the fitted curve predicts.</li>
+    </ul>
+    <ul>
+      <li><b>Post-hoc.</b> The fitted curves were chosen after the pre-registered methods failed to reproduce Oxford's formula. They match a second method (nearest-city lookup) to within 5 places. Treat every rank as approximate.</li>
+      <li><b>Not on the levers.</b> Governance is set for the whole country, and educational attainment and life expectancy are measured for Florida, so they stay fixed. So do natural disasters, economic stability and age profile.</li>
+      <li><b>"Top 50 typical"</b> is the median 2026 value among the Top 50 cities under 4 million. Matching it is a big ask on some levers: on public safety it means a homicide rate about 90% lower.</li>
+      <li>Source: Oxford Economics Global Cities Index, licensed to JCC. The "cities to watch" line is from news coverage of the 2026 index.</li>
+    </ul>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script type="application/json" id="D">__DATA__</script>
+<script type="application/json" id="L">__LAND__</script>
+<script>
+(function(){
+"use strict";
+const D = JSON.parse(document.getElementById("D").textContent);
+const LAND = JSON.parse(document.getElementById("L").textContent);
+const C = D.cities, N = C.length, JI = D.ji, RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const ord = n => { const s = ["th","st","nd","rd"], v = n % 100; return n + (s[(v-20)%10] || s[v] || s[0]); };
+
+/* ===================== globe ===================== */
+const canvas = document.getElementById("globe"), ctx = canvas.getContext("2d");
+let size = 600, dpr = 1, proj, path, rot = [40, -20], target = null, step = 0, spin = !RM, t0 = performance.now();
+const grat = d3.geoGraticule10();
+const ROT = {2: [-8, -42], 3: [81.8, -30.2]};
+let fade = {big:1, top:0, jax:0};
+function resize(){
+  const r = canvas.getBoundingClientRect(); size = Math.max(240, Math.min(r.width, r.height || r.width)); dpr = window.devicePixelRatio || 1;
+  canvas.width = size * dpr; canvas.height = size * dpr;
+  proj = d3.geoOrthographic().scale(size * 0.46).translate([size / 2, size / 2]).clipAngle(90).rotate(rot);
+  path = d3.geoPath(proj, ctx); draw();
+}
+function draw(){
+  if (!proj) return;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, size, size);
+  proj.rotate(rot);
+  ctx.beginPath(); path({type:"Sphere"}); ctx.fillStyle = cssv("--ocean"); ctx.fill();
+  ctx.beginPath(); path(grat); ctx.strokeStyle = "rgba(14,34,38,0.07)"; ctx.lineWidth = 0.7; ctx.stroke();
+  ctx.beginPath(); path(LAND); ctx.fillStyle = cssv("--land"); ctx.fill();
+  ctx.beginPath(); path({type:"Sphere"}); ctx.strokeStyle = "rgba(14,34,38,0.25)"; ctx.lineWidth = 1; ctx.stroke();
+  const center = [-rot[0], -rot[1]], dot = cssv("--dot"), acc = cssv("--accent");
+  const R = size / 600;
+  /* ordinary cities */
+  for (let k = 0; k < N; k++) {
+    const c = C[k]; if (k === JI) continue;
+    if (d3.geoDistance(c.xy, center) > 1.55) continue;
+    const isTop = c.u4 && c.r > 0 && c.r <= 50 && fade.top > 0;
+    if (isTop) continue;
+    const a = c.u4 ? 0.75 : 0.75 * fade.big; if (a < 0.02) continue;
+    const p = proj(c.xy); ctx.globalAlpha = a; ctx.fillStyle = dot; ctx.beginPath(); ctx.arc(p[0], p[1], 2.1 * R, 0, 6.2832); ctx.fill();
+  }
+  /* top 50 */
+  if (fade.top > 0) for (let k = 0; k < N; k++) {
+    const c = C[k]; if (!(c.u4 && c.r > 0 && c.r <= 50 && k !== JI)) continue;
+    if (d3.geoDistance(c.xy, center) > 1.55) continue;
+    const p = proj(c.xy); ctx.globalAlpha = fade.top; ctx.fillStyle = acc; ctx.beginPath(); ctx.arc(p[0], p[1], 4.4 * R, 0, 6.2832); ctx.fill();
+    ctx.globalAlpha = fade.top * 0.25; ctx.beginPath(); ctx.arc(p[0], p[1], 8 * R, 0, 6.2832); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  /* Jacksonville */
+  const j = C[JI];
+  if (fade.jax > 0 && d3.geoDistance(j.xy, center) < 1.5) {
+    const p = proj(j.xy), pulse = RM ? 0 : (Math.sin((performance.now() - t0) / 420) + 1) / 2;
+    ctx.globalAlpha = fade.jax * (0.35 - 0.25 * pulse); ctx.fillStyle = cssv("--jax-bright"); ctx.beginPath(); ctx.arc(p[0], p[1], (14 + 10 * pulse) * R, 0, 6.2832); ctx.fill();
+    ctx.globalAlpha = fade.jax; ctx.beginPath(); ctx.arc(p[0], p[1], 6.5 * R, 0, 6.2832); ctx.fill();
+    ctx.strokeStyle = "#FFFFFF"; ctx.lineWidth = 2; ctx.stroke();
+    ctx.font = `800 ${Math.round(17 * R + 4)}px Archivo, Arial, sans-serif`; ctx.textBaseline = "middle";
+    const label = "Jacksonville", tx = p[0] + 14 * R, ty = p[1] - 18 * R, w = ctx.measureText(label).width;
+    ctx.fillStyle = "rgba(255,255,255,0.92)"; ctx.fillRect(tx - 6, ty - 13 * R - 2, w + 12, 26 * R + 4);
+    ctx.fillStyle = cssv("--jax"); ctx.fillText(label, tx, ty);
+    ctx.globalAlpha = 1;
+  }
+}
+const lerp = (a, b, t) => a + (b - a) * t;
+function tick(now){
+  const goal = {big: step >= 1 ? 0.12 : 1, top: step >= 2 ? 1 : 0, jax: step >= 3 ? 1 : 0};
+  for (const k in fade) fade[k] = RM ? goal[k] : lerp(fade[k], goal[k], 0.08);
+  if (target) {
+    const dl = ((target[0] - rot[0] + 540) % 360) - 180;
+    if (RM) { rot = target.slice(); }
+    else { rot = [rot[0] + dl * 0.06, lerp(rot[1], target[1], 0.06)]; }
+    if (Math.abs(dl) < 0.05 && Math.abs(target[1] - rot[1]) < 0.05) rot = target.slice();
+  } else if (spin) { rot = [rot[0] + 0.08, lerp(rot[1], -20, 0.02)]; }
+  draw();
+  if (!RM || target) requestAnimationFrame(tick);
+}
+function setStep(s){
+  step = s; target = ROT[s] || null; if (!target && RM) rot = [40, -20];
+  document.querySelectorAll(".step").forEach(el => el.classList.toggle("on", +el.dataset.step === s));
+  if (RM) { const g = {big: s >= 1 ? 0.12 : 1, top: s >= 2 ? 1 : 0, jax: s >= 3 ? 1 : 0}; Object.assign(fade, g); if (target) rot = target.slice(); draw(); }
+}
+const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) setStep(+e.target.dataset.step); }); }, {rootMargin: "-45% 0px -45% 0px"});
+document.querySelectorAll(".step").forEach(el => io.observe(el));
+window.addEventListener("resize", () => { clearTimeout(window.__rz); window.__rz = setTimeout(() => { resize(); drawStrip(); }, 120); });
+resize(); requestAnimationFrame(tick);
+
+/* ===================== 845-city strip ===================== */
+const U4 = C.map((c, k) => k).filter(k => C[k].u4).sort((a, b) => C[a].r - C[b].r);
+function drawStrip(){
+  const box = document.getElementById("strip"), W = Math.max(320, Math.min(1240, box.clientWidth || 900)), H = 120, m = {l:8, r:8};
+  const n = U4.length, x = r => m.l + (r - 0.5) / n * (W - m.l - m.r), bw = Math.max(0.6, (W - m.l - m.r) / n - 0.35);
+  const ink = cssv("--dot"), acc = cssv("--accent"), jax = cssv("--jax-bright");
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="All 845 cities under 4 million in rank order. The Top 50 are at the left; Jacksonville is 97th, 47 places from the Top 50 line.">`;
+  s += `<rect x="${m.l}" y="34" width="${x(50.5) - m.l}" height="50" fill="${cssv("--accent-soft")}"/>`;
+  U4.forEach(k => { const r = C[k].r, isJ = k === JI, isT = r <= 50; s += `<rect x="${x(r) - bw / 2}" y="${isJ ? 26 : 44}" width="${isJ ? Math.max(3, bw * 1.6) : bw}" height="${isJ ? 66 : 30}" fill="${isJ ? jax : isT ? acc : ink}" ${isJ || isT ? "" : 'fill-opacity="0.55"'}/>`; });
+  s += `<text x="${m.l}" y="20" class="lbl">Top 50</text><text x="${x(97)}" y="14" text-anchor="middle" class="lbl" style="fill:${cssv("--jax")}">Jacksonville, 97th</text>`;
+  s += `<text x="${m.l}" y="${H - 8}">1st</text><text x="${W - m.r}" y="${H - 8}" text-anchor="end">845th</text>`;
+  s += `<line x1="${x(50.5)}" x2="${x(96.5)}" y1="100" y2="100" stroke="${cssv("--ink")}" stroke-width="1.5"/><text x="${(x(50.5) + x(96.5)) / 2}" y="${H - 8}" text-anchor="middle" class="lbl">47 places</text>`;
+  box.innerHTML = s + "</svg>";
+}
+drawStrip();
+
+/* ===================== calculator ===================== */
+const P = D.pillars, W = D.w, IND = D.ind, S0 = D.score;
+const mm = a => { let lo = Infinity, hi = -Infinity; for (const v of a) { if (v < lo) lo = v; if (v > hi) hi = v; } const sp = hi - lo || 1; return a.map(v => (v - lo) / sp * 100); };
+/* base weighted sums per pillar; only Jacksonville's entry changes */
+const ACC = {}; P.forEach(p => { const a = new Float64Array(N); IND.filter(i => i.p === p).forEach(i => { const s = S0[i.k]; for (let k = 0; k < N; k++) a[k] += s[k] * i.w; }); ACC[p] = a; });
+const IW = Object.fromEntries(IND.map(i => [i.k, i]));
+function rankWith(delta){ /* delta: {indicatorKey: change in Jacksonville's 0-100 score} */
+  const pil = {};
+  P.forEach(p => { const a = Array.from(ACC[p]); for (const k in delta) if (IW[k].p === p) a[JI] += delta[k] * IW[k].w; pil[p] = mm(a); });
+  const raw = new Array(N).fill(0); P.forEach(p => { for (let k = 0; k < N; k++) raw[k] += pil[p][k] * W[p]; });
+  const t = mm(raw); let r = 1; for (let k = 0; k < N; k++) if (k !== JI && C[k].u4 && t[k] > t[JI] + 1e-9) r++;
+  return r;
+}
+const bc = (x, l) => Math.abs(l) < 1e-9 ? Math.log(x) : (Math.pow(x, l) - 1) / l;
+function hat(L, x){ const m = L.m, v = Math.min(m.hi, Math.max(m.lo, L.dir * bc(Math.max(x - m.sh, 1e-12), m.lam))); return (v - m.a) / (m.b - m.a) * 100; }
+const LV = D.levers;
+const valAt = (L, f) => L.jax + f * (L.med - L.jax);
+function scoreDelta(L, f){ if (!f) return 0; const s0 = S0[L.k][JI], d = hat(L, valAt(L, f)) - hat(L, L.jax); return Math.min(100, Math.max(0, s0 + d)) - s0; }
+const state = Object.fromEntries(LV.map(L => [L.k, 0]));
+const fmt = (L, v) => Number(v).toLocaleString("en-US", {minimumFractionDigits: L.dp, maximumFractionDigits: L.dp});
+const BASE = rankWith({});
+/* gain from fully matching each lever alone */
+const ALONE = Object.fromEntries(LV.map(L => [L.k, BASE - rankWith({[L.k]: scoreDelta(L, 1)})]));
+const GROUPS = [["place","Quality of place","Where people want to live"],["talent","Talent","Who lives and learns here"],["growth","Business growth","What firms build here"],["green","Environment","How cleanly we grow"]];
+document.getElementById("groups").innerHTML = GROUPS.map(([g, t, sub]) => `<section class="group" aria-labelledby="g-${g}"><h3 id="g-${g}">${t} <small>${sub}</small></h3>` +
+  LV.filter(L => L.group === g).map(L => `<div class="lever" id="lv-${L.k}">
+    <div class="lv-top"><label for="s-${L.k}">${L.label}</label><span class="gain">up to ▲${ALONE[L.k]} on its own</span></div>
+    <div class="lv-metric">${L.metric} (${L.unit})${L.k === "emp_growth" ? ' <span class="rough">· rough estimate</span>' : ""}</div>
+    <input type="range" id="s-${L.k}" min="0" max="100" step="5" value="0">
+    <div class="lv-vals"><span>Today <b>${fmt(L, L.jax)}</b></span><span id="v-${L.k}">0% of the gap</span><span>Top 50 typical <b>${fmt(L, L.med)}</b></span></div>
+    <p class="idea"><strong>What your company can do:</strong> ${L.idea}</p>
+  </div>`).join("") + `</section>`).join("");
+const rankEl = document.getElementById("rank"), chgEl = document.getElementById("chg"), wordsEl = document.getElementById("words"), fillEl = document.getElementById("fill"), goalEl = document.getElementById("goal");
+const span = BASE - 1; goalEl.style.left = ((BASE - 50) / span * 100) + "%";
+let shown = BASE, animT = null, wordsT = null;
+function analog(r){ const k = C.findIndex((c, i) => i !== JI && c.u4 && c.r === (r >= BASE ? r + 1 : r)); return k >= 0 ? C[k] : null; }
+function update(){
+  const delta = {}; LV.forEach(L => { const f = state[L.k] / 100; if (f) delta[L.k] = scoreDelta(L, f); });
+  const r = rankWith(delta), d = BASE - r, moved = Object.keys(delta);
+  LV.forEach(L => { const f = state[L.k] / 100, el = document.getElementById("s-" + L.k);
+    el.setAttribute("aria-valuetext", `${state[L.k]}% of the gap: ${fmt(L, valAt(L, f))} ${L.unit}`);
+    document.getElementById("v-" + L.k).innerHTML = f ? `<b>${fmt(L, valAt(L, f))}</b> (${state[L.k]}%)` : "0% of the gap";
+    document.getElementById("lv-" + L.k).classList.toggle("moved", f > 0); });
+  /* count the big number toward its new value */
+  cancelAnimationFrame(animT);
+  const from = shown, t1 = performance.now();
+  const go = now => { const t = RM ? 1 : Math.min(1, (now - t1) / 450), e = 1 - Math.pow(1 - t, 3); shown = Math.round(from + (r - from) * e); rankEl.textContent = shown; if (t < 1) animT = requestAnimationFrame(go); };
+  animT = requestAnimationFrame(go);
+  rankEl.classList.toggle("in", r <= 50);
+  chgEl.textContent = d > 0 ? `▲ ${d} places` : d < 0 ? `▼ ${-d}` : "Today"; chgEl.className = "chg" + (d > 0 ? " up" : "");
+  fillEl.style.width = Math.max(0, Math.min(100, (BASE - r) / span * 100)) + "%";
+  const a = analog(r);
+  const msg = !moved.length ? `Jacksonville ranks ${ord(BASE)} of 845 today. Move a lever, or try a starting point below.`
+    : r <= 50 ? `About ${ord(r)}: inside the Top 50, about where ${a ? a.n : "a Top 50 city"} ranks today.`
+    : `About ${ord(r)}, roughly where ${a ? a.n + (a.c === "United States" ? "" : ", " + a.c) : "a peer city"} ranks today. ${r - 50} places to go.`;
+  clearTimeout(wordsT); wordsT = setTimeout(() => { wordsEl.textContent = msg; }, 250);
+}
+document.getElementById("groups").addEventListener("input", e => { if (!e.target.id.startsWith("s-")) return; state[e.target.id.slice(2)] = +e.target.value; setPreset(null); update(); });
+function setPreset(p){ document.querySelectorAll(".pbtn").forEach(b => b.setAttribute("aria-pressed", b.dataset.p === p && p !== "reset")); }
+document.querySelector(".presets").addEventListener("click", e => { const b = e.target.closest(".pbtn"); if (!b) return;
+  const p = b.dataset.p, v = p === "half" ? 50 : p === "full" ? 100 : 0;
+  LV.forEach(L => { state[L.k] = p === "reset" ? 0 : (["rec","crime","ineq"].includes(L.k) ? v : 0); document.getElementById("s-" + L.k).value = state[L.k]; });
+  setPreset(p); update(); });
+update();
+window.__check = () => ({base: BASE, half: (() => { const d = {}; ["rec","crime","ineq"].forEach(k => d[k] = scoreDelta(LV.find(L => L.k === k), .5)); return rankWith(d); })(), full: (() => { const d = {}; ["rec","crime","ineq"].forEach(k => d[k] = scoreDelta(LV.find(L => L.k === k), 1)); return rankWith(d); })(), alone: ALONE});
+})();
+</script>
