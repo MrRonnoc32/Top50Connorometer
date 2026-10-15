@@ -12,4 +12,5 @@ python3 gen_v6.py          # conn_data.json: Oxford 2026 scores, raw values, fit
 python3 model_params.py    # model_params.json: fitted raw-to-score curves (post-hoc)
 python3 story_data.py      # story_data.json: what the page needs
 python3 assemble.py "$ROOT"
-echo "Done. Open dist/index.html in a browser."
+mkdir -p "$ROOT/docs" && cp "$ROOT/dist/index.html" "$ROOT/docs/index.html" && touch "$ROOT/docs/.nojekyll"
+echo "Done. dist/index.html and docs/index.html (the GitHub Pages copy) are updated."

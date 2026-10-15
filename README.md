@@ -2,11 +2,15 @@
 
 A scrolling story page for Jacksonville CEOs, built by the Jacksonville Civic Council (JCC). It opens on a globe of the 845 cities in Oxford Economics' Global Cities Index with fewer than 4 million people. It then shows that Jacksonville ranks 97th in that group and ends with a calculator showing what it would take to reach the Top 50.
 
-## This repo holds no Oxford data
+## Publishing and Oxford's permission
 
-Oxford Economics licenses its Global Cities Index data to JCC. 
+Oxford Economics gave JCC written permission (October 2026) to publish this page. The live site is GitHub Pages, served from the `docs/` folder on `main`:
 
-- The repo contains code only. `.gitignore` blocks the Oxford files and everything built from them (`build/`, `dist/`, `*.xlsx`, `*.gpkg`, and the generated JSON).
+https://mrronnoc32.github.io/Top50Connorometer/
+
+- `docs/index.html` is the published page. It contains data derived from the Oxford index, which is covered by that permission.
+- Oxford's raw files (`*.xlsx`, `*.gpkg`) and intermediate build data stay out of git. `.gitignore` blocks them.
+- To update the site, run `./build.sh`, then commit and push `docs/index.html`.
 
 ## Build
 
@@ -22,7 +26,7 @@ From the repo folder, run:
 ./build.sh "/path/to/JCC Global Cities Index data"
 ```
 
-With no argument, the script looks one folder up. It writes `dist/index.html`, a single self-contained file. Open it in any browser.
+With no argument, the script looks one folder up. It writes `dist/index.html`, a single self-contained file, and copies it to `docs/index.html` for GitHub Pages.
 
 ## What's in here
 

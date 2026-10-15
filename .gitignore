@@ -1,4 +1,4 @@
-# Oxford Economics data is licensed to JCC. Never commit it or anything built from it.
+# Never commit Oxford's raw files or intermediate build data. The published page lives in docs/ (Oxford gave written permission to publish it).
 build/
 dist/
 *.xlsx
