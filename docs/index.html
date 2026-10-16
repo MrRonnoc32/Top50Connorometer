@@ -379,14 +379,14 @@ resize(); requestAnimationFrame(tick);
 const U4 = C.map((c, k) => k).filter(k => C[k].u4).sort((a, b) => C[a].r - C[b].r);
 function drawStrip(){
   const box = document.getElementById("strip"), W = Math.max(320, Math.min(1240, box.clientWidth || 900)), H = 120, m = {l:8, r:8};
-  const n = U4.length, x = r => m.l + (r - 0.5) / n * (W - m.l - m.r), bw = Math.max(0.6, (W - m.l - m.r) / n - 0.35);
+  const n = U4.length, x = r => W - m.r - (r - 0.5) / n * (W - m.l - m.r), bw = Math.max(0.6, (W - m.l - m.r) / n - 0.35);
   const ink = cssv("--dot"), acc = cssv("--accent"), jax = cssv("--jax-bright");
-  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="All 845 cities under 4 million in rank order. The Top 50 are at the left; Jacksonville is 97th, 47 places from the Top 50 line.">`;
-  s += `<rect x="${m.l}" y="34" width="${x(50.5) - m.l}" height="50" fill="${cssv("--accent-soft")}"/>`;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="All 845 cities under 4 million in rank order. The Top 50 are at the right; Jacksonville is 97th, 47 places from the Top 50 line.">`;
+  s += `<rect x="${x(50.5)}" y="34" width="${W - m.r - x(50.5)}" height="50" fill="${cssv("--accent-soft")}"/>`;
   U4.forEach(k => { const r = C[k].r, isJ = k === JI, isT = r <= 50; s += `<rect x="${x(r) - bw / 2}" y="${isJ ? 26 : 44}" width="${isJ ? Math.max(3, bw * 1.6) : bw}" height="${isJ ? 66 : 30}" fill="${isJ ? jax : isT ? acc : ink}" ${isJ || isT ? "" : 'fill-opacity="0.55"'}/>`; });
-  s += `<text x="${m.l}" y="20" class="lbl">Top 50</text><text x="${x(97)}" y="14" text-anchor="middle" class="lbl" style="fill:${cssv("--jax")}">Jacksonville, 97th</text>`;
-  s += `<text x="${m.l}" y="${H - 8}">1st</text><text x="${W - m.r}" y="${H - 8}" text-anchor="end">845th</text>`;
-  s += `<line x1="${x(50.5)}" x2="${x(96.5)}" y1="100" y2="100" stroke="${cssv("--ink")}" stroke-width="1.5"/><text x="${(x(50.5) + x(96.5)) / 2}" y="${H - 8}" text-anchor="middle" class="lbl">47 places</text>`;
+  s += `<text x="${W - m.r}" y="20" text-anchor="end" class="lbl">Top 50</text><text x="${x(97)}" y="14" text-anchor="middle" class="lbl" style="fill:${cssv("--jax")}">Jacksonville, 97th</text>`;
+  s += `<text x="${m.l}" y="${H - 8}">845th</text><text x="${W - m.r}" y="${H - 8}" text-anchor="end">1st</text>`;
+  s += `<line x1="${x(96.5)}" x2="${x(50.5)}" y1="100" y2="100" stroke="${cssv("--ink")}" stroke-width="1.5"/><text x="${(x(50.5) + x(96.5)) / 2}" y="${H - 8}" text-anchor="middle" class="lbl">47 places</text>`;
   box.innerHTML = s + "</svg>";
 }
 drawStrip();
