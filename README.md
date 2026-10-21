@@ -37,7 +37,9 @@ With no argument, the script looks one folder up. It writes `dist/index.html`, a
 | `scripts/gen_v6.py` | Builds Oxford's 2026 scores and raw values, and fits the indicator weights inside each pillar. |
 | `scripts/reg.py`, `scripts/model_params.py` | Fit a curve per metric from raw value to Oxford's 0 to 100 score. |
 | `scripts/city_xy.py` | Takes metro center points from the boundaries file. |
-| `scripts/story_data.py` | Assembles what the page needs: cities, the 12 levers, the Top 50 typical values. |
+| `scripts/story_data.py` | Assembles what the page needs: cities, all 27 levers with who-controls-it tags, the Top 50 typical values. |
+| `scripts/progress_data.py` | Three editions of scores for Jacksonville and the 13 peers from JCC's municipal finance study. |
+| `scripts/story_extras.py` | Under-4M ranks for each edition (each edition's own populations) and the five US and Canada cities to watch. |
 | `scripts/assemble.py` | Writes `dist/index.html`. |
 | `vendor/` | D3 7.8.5 (ISC license) and Natural Earth land outlines from world-atlas 2.0.2 (public domain). |
 
@@ -52,6 +54,8 @@ Checks on the built page, using the 2026 data:
 - No changes: 97th.
 - Recreation, crime and income equality halfway to the Top 50 typical value: about 65th.
 - All three fully matched: about 44th.
+- Demo scenario (the top five levers in the priorities chart, each closing half its gap): about 58th.
+- Under-4M group: 850 (2024), 846 (2025), 845 (2026) cities; Jacksonville 103rd, 120th, 97th.
 
 These agree with a second method (nearest-city lookup) to within 5 places.
 

@@ -1,0 +1,23 @@
+"""Additions to story_data.json: under-4M ranks by edition (each edition's own populations),
+the five US/Canada 'cities to watch' from Oxford's 2026 key findings page."""
+import json, pandas as pd
+from load import load
+S = json.load(open("story_data.json")); D = json.load(open("conn_data.json"))
+ref = pd.read_excel("City reference.xlsx").set_index("Code")
+P = ["Economics", "Human capital", "Quality of life", "Environment", "Governance"]; PK = ["econ", "hc", "qol", "env", "gov"]
+u4h = {"years": [2024, 2025, 2026], "n": [], "overall": [], "pil": {k: [] for k in PK}, "all": [], "allPil": {k: [] for k in PK}}
+for y in u4h["years"]:
+    s, r, raw, grp = load(y); s = s.set_index("Code"); r = r.set_index("Code")
+    sub = s[ref[f"{y} index population"].reindex(s.index) < 4e6]
+    rk = lambda col: int((sub[col] > sub.loc["USM37", col]).sum() + 1)
+    u4h["n"].append(len(sub)); u4h["overall"].append(rk("Overall")); u4h["all"].append(int(r.loc["USM37", "Overall"]))
+    for p, k in zip(P, PK): u4h["pil"][k].append(rk(p)); u4h["allPil"][k].append(int(r.loc["USM37", p]))
+WATCH = [("San Antonio", "United States"), ("Boise", "United States"), ("Edmonton", "Canada"), ("Jacksonville", "United States"), ("Durham", "United States")]
+codes = [c["code"] for c in D["cities"]]
+watch = []
+for n, c in WATCH:
+    k = [i for i, x in enumerate(D["cities"]) if x["n"] == n and x["c"] == c]; assert len(k) == 1, n
+    watch.append(k[0])
+S["u4h"] = u4h; S["watch"] = watch
+json.dump(S, open("story_data.json", "w"), separators=(",", ":"), ensure_ascii=False)
+print(u4h); print([(S["cities"][k]["n"], S["cities"][k]["r"], S["cities"][k]["o"][2], S["cities"][k]["u4"]) for k in watch])

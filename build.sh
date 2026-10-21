@@ -12,6 +12,7 @@ python3 gen_v6.py          # conn_data.json: Oxford 2026 scores, raw values, fit
 python3 model_params.py    # model_params.json: fitted raw-to-score curves (post-hoc)
 python3 progress_data.py   # progress.json: three editions for Jacksonville and the 13 peers
 python3 story_data.py      # story_data.json: what the page needs
+python3 story_extras.py    # adds under-4M ranks by edition and the cities to watch
 python3 assemble.py "$ROOT"
 mkdir -p "$ROOT/docs" && cp "$ROOT/dist/index.html" "$ROOT/docs/index.html" && touch "$ROOT/docs/.nojekyll"
 echo "Done. dist/index.html and docs/index.html (the GitHub Pages copy) are updated."
