@@ -663,7 +663,8 @@ const REAL = {
     return `At <b>${v.toFixed(1)}%</b> of income, housing and utilities would cost about <b>${usd(a)}</b> per resident a year` + (a < a0 - 5 ? `, about <b>${usd(a0 - a)} less</b> than today's ${usd(a0)}.` : `, today's level.`) + ` (This uses Oxford's income per person, ${usd(inc)}.) US cities near this share: ${listJoin(nearC("housing", v, POOL_US, 3))}.`; },
   rec: v => `An index of <b>${v.toFixed(3)}</b> is <b>${(v / LVk.rec.jax).toFixed(1)} times</b> today's. Cities near this level: ${listJoin(nearC("rec", v, POOL_U4, 3))}. Oxford's index averages the total number of sites with sites per resident, so it rewards both. No US city under 4 million is above ${RL.rec.usmaxv.toFixed(2)} (${listJoin(RL.rec.usmax)}). ${RL.rec.osm}`
 };
-function leverHTML(L, pn){ const ex = REAL[L.k] && RL[L.k].ex;
+function leverHTML(L, pn){ const ex = RL[L.k] && RL[L.k].ex;
+  const srcs = ex => `<a href="${ex.url}" target="_blank" rel="noopener">Source: ${ex.src}<span class="visually-hidden"> (opens in a new tab)</span></a>` + (ex.url2 ? `; <a href="${ex.url2}" target="_blank" rel="noopener">${ex.src2}<span class="visually-hidden"> (opens in a new tab)</span></a>` : "");
   return `<div class="lever" id="lv-${L.k}" data-ctrl="${L.ctrl}">
     <div class="lv-top"><label for="s-${L.k}">${L.label}<span class="tag tag-${L.ctrl}">${CTRL[L.ctrl][0]}</span>${pn ? `<span class="prio">${pn <= 3 ? "Priority " + pn : "Demo lever " + pn}</span>` : ""}</label><span class="gain">${ALONE[L.k] > 0 ? `up to ▲${ALONE[L.k]} on its own` : "little effect on its own"}</span></div>
     <div class="lv-metric">${L.metric} (${L.unit})${L.rough ? ' <span class="rough">· rough estimate</span>' : ""}</div>
@@ -673,7 +674,7 @@ function leverHTML(L, pn){ const ex = REAL[L.k] && RL[L.k].ex;
     <div class="vals4"><div><span class="k">Baseline</span><b>${fmt(L, L.jax)}</b></div><div><span class="k">Scenario</span><b id="v-${L.k}">${fmt(L, L.jax)}</b></div><div><span class="k">Change</span><b id="d-${L.k}">No change</b></div><div><span class="k">${L.tgtLab}</span><b>${fmt(L, L.med)}</b></div></div>
     <p class="effect" id="e-${L.k}" hidden></p>
     <p class="idea"><strong>${L.ctrl === "L" ? "What your organization can do:" : "Who controls it:"}</strong> ${L.idea}</p>
-    ${ex ? `<div class="real"><h4>In real life</h4><p class="calcline" id="rl-${L.k}"></p><p class="ex"><b>Example: ${ex.city}.</b> ${ex.text} <a href="${ex.url}" target="_blank" rel="noopener">Source: ${ex.src}<span class="visually-hidden"> (opens in a new tab)</span></a></p></div>` : ""}
+    ${ex ? `<div class="real"><h4>In real life</h4>${REAL[L.k] ? `<p class="calcline" id="rl-${L.k}"></p>` : ""}<p class="ex"><b>Example: ${ex.city}.</b> ${ex.text} ${srcs(ex)}</p></div>` : ""}
   </div>`; }
 document.getElementById("prioGroup").innerHTML = `<section class="group" aria-labelledby="g-prio"><h3 id="g-prio">The three priority levers <small>ranked in section 3</small></h3>` + P3.map((k, i) => leverHTML(LVk[k], i + 1)).join("") + `</section>`;
 document.getElementById("groups").innerHTML = GROUPS.map(([g, t]) => `<section class="group" id="grp-${g}" aria-labelledby="g-${g}"><h3 id="g-${g}">${t} <small>${Math.round(W[g] * 100)}% of the total score</small></h3>` + LV.filter(L => L.p === g && !P3.includes(L.k)).map(L => leverHTML(L, P5.indexOf(L.k) + 1)).join("") + `</section>`).join("");
@@ -865,7 +866,7 @@ prioChart();
 let prT = null; window.addEventListener("resize", () => { clearTimeout(prT); prT = setTimeout(prioChart, 150); });
 /* ===================== part 5: action cards ===================== */
 document.getElementById("acts").innerHTML = P3.map((k, i) => { const L = LVk[k], ex = RL[k] && RL[k].ex;
-  return `<div class="act"><h3>${L.label}<span class="prio">${i < 3 ? "Priority " + (i + 1) : "Demo lever " + (i + 1)}</span></h3><p>${L.idea}</p>${ex ? `<p><b>Example: ${ex.city}.</b> ${ex.text.split(". ").slice(0, 2).join(". ")}. <a href="${ex.url}" target="_blank" rel="noopener">Source<span class="visually-hidden">: ${ex.src} (opens in a new tab)</span></a></p>` : `<p><span class="pending">Pending:</span> a sourced example from another city.</p>`}</div>`; }).join("");
+  return `<div class="act"><h3>${L.label}<span class="prio">${i < 3 ? "Priority " + (i + 1) : "Demo lever " + (i + 1)}</span></h3><p>${L.idea}</p>${ex ? `<p><b>Example: ${ex.city}.</b> ${ex.text} <a href="${ex.url}" target="_blank" rel="noopener">Source<span class="visually-hidden">: ${ex.src} (opens in a new tab)</span></a>${ex.url2 ? `, <a href="${ex.url2}" target="_blank" rel="noopener">second source<span class="visually-hidden">: ${ex.src2} (opens in a new tab)</span></a>` : ""}</p>` : `<p><span class="pending">Pending:</span> a sourced example from another city.</p>`}</div>`; }).join("");
 window.__check = () => ({base: BASE, nU4: NU4, usTop: USTOP.length, p5: P5, demo: rankWith(Object.fromEntries(P5.map(k => [k, scoreDelta(LVk[k], .5)]))),
   allLocalHalf: rankWith(Object.fromEntries(LV.filter(L => L.ctrl === "L").map(L => [L.k, scoreDelta(L, .5)]))),
   half3: rankWith(Object.fromEntries(["rec", "crime", "ineq"].map(k => [k, scoreDelta(LVk[k], .5)]))), full3: rankWith(Object.fromEntries(["rec", "crime", "ineq"].map(k => [k, scoreDelta(LVk[k], 1)]))),
