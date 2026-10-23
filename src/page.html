@@ -307,6 +307,98 @@ h1,h2,h3{font-weight:700!important;font-stretch:normal!important;letter-spacing:
 .cbtn.solid{background:var(--deep);border-color:var(--deep)}
 .cta{background:var(--deep)}
 .ptab[aria-selected="true"],.seg button[aria-pressed="true"],.fbtn[aria-pressed="true"]{background:var(--deep);border-color:var(--deep)}
+
+/* ---------- Oct 23 review: brevity ---------- */
+.step .key{margin-top:10px}
+.scrollcue{margin-top:12px}
+details.top50{margin-top:12px}
+details.top50 summary{min-height:44px;display:flex;align-items:center;font-weight:700;color:var(--accent);cursor:pointer}
+details.top50 ol{margin:6px 0 0;padding-left:2.2rem;columns:2;column-gap:20px;font-size:.88rem;max-height:260px;overflow:auto}
+.uslist li[tabindex]{cursor:pointer}
+.uslist li[tabindex]:hover,.uslist li[tabindex]:focus-visible{background:var(--accent);color:#FFFFFF}
+.toc{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 40px}
+@media (max-width:860px){.gd{grid-template-columns:minmax(0,1fr)}}
+.gd h3{font-size:1.5rem;margin-bottom:10px}
+.gd h3 .up,.gd h3 .dn{font-weight:700}
+.pils{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.pil{border:1px solid var(--rule);border-radius:10px;padding:8px 12px;background:var(--surface);min-width:140px}
+.pil .t{font-size:.85rem;font-weight:700}
+.pil .v{font-family:var(--f-mono);font-size:1rem}
+.mv2{list-style:none;margin:0;padding:0}
+.mv2 li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px;border-top:1px solid var(--rule-soft);padding:10px 0}
+.mv2 .nm{font-weight:700}
+.mv2 .ds{font-size:.86rem;color:var(--ink-2);grid-column:1}
+.mv2 .sc{font-size:.86rem;grid-column:1;font-family:var(--f-mono)}
+.mv2 .ch{grid-row:1/4;grid-column:2;align-self:center;font-family:var(--f-mono);font-size:1.4rem;font-weight:600}
+.mv2 .mtag{display:block;font-size:.8rem;color:var(--jax);font-weight:600;grid-column:1}
+.bars{list-style:none;margin:0 0 8px;padding:0}
+.bars li{padding:10px 0;border-top:1px solid var(--rule-soft)}
+.bars .nm{font-weight:700;font-size:1.05rem}
+.bars .ds{font-size:.86rem;color:var(--ink-2)}
+.bars .row{display:flex;align-items:center;gap:10px;margin-top:6px}
+.bars .bar{height:14px;border-radius:7px;background:var(--accent-mid)}
+.bars .val{font-family:var(--f-mono);font-size:.9rem;white-space:nowrap}
+.bars .tie{font-size:.75rem;font-weight:700;border:1px solid var(--ink-2);border-radius:999px;padding:1px 8px;margin-left:6px}
+.legend2{font-size:.88rem;color:var(--ink-2);margin:0 0 6px}
+.areas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+@media (max-width:760px){.areas{grid-template-columns:minmax(0,1fr)}}
+.area{border:2px solid var(--accent-mid);border-radius:12px;padding:14px 16px;background:var(--surface)}
+.area h4{font-family:var(--f-display);font-size:1.1rem;margin:0 0 6px;color:var(--deep)}
+.area ul{margin:0;padding-left:1.1rem;font-size:.92rem}
+.area p{font-size:.92rem}
+.deeper{margin-top:22px}
+.calcbox{margin-top:18px}
+.onechk{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:.92rem}
+.onechk input{width:22px;height:22px;accent-color:var(--deep)}
+.gb{position:relative;padding:8px 0 28px 64px;margin-top:18px}
+.gb::before{content:"";position:absolute;left:22px;top:22px;bottom:16px;width:3px;border-radius:2px}
+.gb.up2::before{background:linear-gradient(var(--accent-mid),rgba(32,133,145,0))}
+.gb.dn2::before{background:linear-gradient(#B3262D,rgba(179,38,45,0))}
+.gb .arr{position:absolute;left:10px;width:27px;height:16px}
+.gb.up2 .arr{top:8px}.gb.dn2 .arr{bottom:10px}
+.gb h3{font-size:clamp(1.9rem,4.2vw,3rem);margin:0 0 18px;color:var(--deep)}
+.gb.up2 h3 em{font-style:normal;color:var(--head)}.gb.dn2 h3 em{font-style:normal;color:#8A161C}
+.gcols{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px 48px}
+@media (max-width:900px){.gcols{grid-template-columns:minmax(0,1fr)}.gb{padding-left:44px}.gb::before{left:14px}.gb .arr{left:2px}}
+.glab{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--deep);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.glab .pill{letter-spacing:.04em;border:2px solid var(--head);border-radius:999px;padding:1px 10px;font-size:.78rem;color:var(--deep)}
+.gsub{font-size:.95rem;color:var(--ink-2);margin:6px 0 10px}
+.slope svg{width:100%;height:auto;display:block}
+.slope text{font-family:var(--f-body);font-size:13px;fill:var(--ink-2)}
+.irow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 18px;border-top:1px solid var(--rule-soft);padding:14px 0 10px}
+.irow .nm{font-weight:700;font-size:1.05rem;color:var(--deep)}
+.irow .tg{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;border:1px solid var(--rule);border-radius:999px;padding:1px 8px;margin-left:8px;color:var(--ink-2);vertical-align:2px}
+.irow .ds,.irow .sc{font-size:.9rem;color:var(--ink-2);grid-column:1}
+.irow .ds b{color:var(--ink)}
+.irow .fl{grid-column:1;font-size:.85rem;font-weight:600;color:#6B4A00}
+.irow .fl::before{content:"";display:inline-block;width:9px;height:9px;background:#E8A72C;border-radius:2px;margin-right:6px}
+.irow .big{grid-column:2;grid-row:1/4;align-self:center;font-family:var(--f-display);font-weight:700;font-size:2rem;line-height:1}
+.gb.up2 .big{color:var(--head)}.gb.dn2 .big{color:#8A161C}
+.irow svg{grid-column:1/-1;width:100%;height:18px;display:block;margin-top:6px}
+.iaxis{display:flex;justify-content:space-between;font-size:.8rem;color:var(--ink-2);border-top:1px solid var(--rule-soft);padding-top:6px}
+#leverMap svg{width:100%;height:auto;display:block}
+#leverMap text{font-family:var(--f-body)}
+.lmap .lk{transition:opacity .25s}
+.lmap.sel .lk{opacity:.12}.lmap.sel .lk.on{opacity:1}
+.lmap.sel .col .ar{opacity:.25}.lmap.sel .col.on .ar{opacity:1}
+.areas2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:-4px}
+.abtn{min-height:120px;border-radius:14px;border:2px solid var(--c);background:linear-gradient(135deg,var(--cs),#FFFFFF 70%);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:700;font-size:1.02rem;color:var(--deep);padding:12px}
+.abtn svg{width:40px;height:40px}
+.abtn:hover{box-shadow:0 0 0 3px var(--cs)}
+.abtn[aria-pressed="true"]{box-shadow:0 0 0 4px var(--c);background:var(--cs)}
+.maplegend{font-size:.88rem;color:var(--ink-2);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+.maplegend .ln{display:inline-block;width:34px;height:0;border-top:3px solid var(--ink-2)}
+.maplegend .ln.dot{border-top:3px dotted var(--ink-2);margin-left:14px}
+@media (max-width:719px){.areas2{gap:6px}.abtn{min-height:84px;font-size:.78rem;gap:6px;padding:8px 4px;line-height:1.2}.abtn svg{width:28px;height:28px}}
+.acts3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.acts3{grid-template-columns:minmax(0,1fr)}}
+.act3{border:1px solid var(--rule);border-radius:12px;background:var(--surface);padding:16px 18px}
+.act3 .k{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--ink-2)}
+.act3 h3{font-size:1.25rem;margin:4px 0 8px}
+.act3 ul{margin:0;padding-left:1.1rem;font-size:.93rem}
+.act3 li{margin:.35rem 0}
+.act3 a{color:var(--accent);font-weight:600}
 </style>
 
 <div class="wrap">
@@ -320,37 +412,32 @@ h1,h2,h3{font-weight:700!important;font-stretch:normal!important;letter-spacing:
     <div class="steps">
       <article class="step on" data-step="0">
         <div class="eyebrow">Oxford Economics Global Cities Index, 2026</div>
-        <h1>The path to the <em>Top 50</em></h1>
+        <h1>Path to <em>Top 50</em></h1>
         <p>Every year Oxford Economics ranks the world's 1,000 largest cities on their economies, people, quality of life, environment and governance.</p>
-        <div class="key"><span><i class="sw" style="background:var(--dot)"></i>A city in the index</span></div>
         <p class="scrollcue">Scroll to follow Jacksonville ↓</p>
+        <div class="key"><span><i class="sw" style="background:var(--dot)"></i>A city in the index</span></div>
       </article>
       <article class="step" data-step="1">
-        <div class="eyebrow">Our comparison group</div>
         <h2><span class="u4n">845</span> cities our size</h2>
-        <p>The global giants play a different game. We measure Jacksonville against the <span class="u4n">845</span> cities in the index with fewer than 4 million people, using Oxford's own population figures. Every rank on this page uses that group unless it says otherwise.</p>
+        <p>We measure Jacksonville against the <span class="u4n">845</span> cities in the index with fewer than 4 million people, using Oxford's population figures.</p>
+        <details class="top50"><summary>See the Top 50</summary><ol id="top50List"></ol></details>
         <div class="key"><span><i class="sw" style="background:var(--dot)"></i>Under 4 million people</span></div>
       </article>
       <article class="step" data-step="2">
-        <div class="eyebrow">Jacksonville</div>
         <h2>Jacksonville is already <span class="jr">97th</span></h2>
-        <p>That puts Jacksonville ahead of <span id="aheadN">748</span> cities its size. The 50th spot belongs to <span id="fiftieth">Eindhoven</span>, <span id="gapN">47</span> places up.</p>
-        <div class="key"><span><i class="sw" style="background:var(--jax-bright)"></i>Jacksonville</span></div>
+        <p>That puts Jacksonville ahead of <span id="aheadN">748</span> cities its size. The city climbed <span id="climbN">23</span> places in 2026, up from <span id="r25a">120th</span> in 2025.</p>
       </article>
       <article class="step" data-step="3">
-        <div class="eyebrow">The Top 50</div>
         <h2>The 50 that lead the group</h2>
-        <p>The Top 50 cluster in Western Europe, Australia and North America. <span id="usN">Ten</span> are in the United States:</p>
+        <p><span id="usN">Ten</span> of the Top 50 are in the United States:</p>
         <ul class="uslist" id="usTop"></ul>
         <div class="key"><span><i class="sw" style="background:var(--accent)"></i>Top 50</span><span><i class="sw" style="background:var(--jax-bright)"></i>Jacksonville</span></div>
       </article>
       <article class="step" data-step="4">
-        <div class="eyebrow">Recognition</div>
         <h2>One of five North American cities to watch</h2>
         <p>Oxford's 2026 report names cities to watch. Five are in the United States and Canada:</p>
         <ul class="uslist watch" id="watchList"></ul>
-        <p>This is separate from the Top 50. None of the five is in the Top 50 yet; the numbers are each city's rank under 4 million.</p>
-        <div class="key"><span><i class="sw" style="background:var(--jax-bright)"></i>City to watch</span></div>
+        <p>None of the five cities is in the Top 50 yet. The numbers show each city's rank among cities with fewer than 4 million people.</p>
       </article>
     </div>
   </section>
@@ -365,29 +452,29 @@ h1,h2,h3{font-weight:700!important;font-stretch:normal!important;letter-spacing:
     <div class="strip" id="strip"></div>
     <ol class="toc" aria-label="Sections of this page">
       <li><a href="#p1"><span class="k">1</span><span class="t">Progress</span></a></li>
-      <li><a href="#p2"><span class="k">2</span><span class="t">Remaining work</span></a></li>
-      <li><a href="#p3"><span class="k">3</span><span class="t">Priorities</span></a></li>
-      <li><a href="#p4"><span class="k">4</span><span class="t">Scenario</span></a></li>
-      <li><a href="#p5"><span class="k">5</span><span class="t">Action</span></a></li>
+      <li><a href="#p3"><span class="k">2</span><span class="t">Priorities</span></a></li>
+      <li><a href="#p5"><span class="k">3</span><span class="t">Action</span></a></li>
     </ol>
   </section>
 
   <section class="part prog" id="p1" aria-labelledby="p1H">
     <header>
-      <div class="eyebrow">1 · Progress <span class="obs o">Observed</span></div>
+      <div class="eyebrow">1 · What's happened</div>
       <h2 id="p1H">Up <span id="upN">23</span> places in a year</h2>
-      <p>Among cities under 4 million, Jacksonville went from <span id="r25">120th</span> in the 2025 edition to <span id="r26">97th</span> in 2026. Each edition's group uses that edition's populations, so the count changes slightly.</p>
     </header>
     <div class="ptabs" role="tablist" aria-label="Progress views">
       <button class="ptab" role="tab" id="tabA" aria-selected="true" aria-controls="panA" tabindex="0">Jacksonville's progress</button>
       <button class="ptab" role="tab" id="tabB" aria-selected="false" aria-controls="panB" tabindex="-1">Compare to a peer</button>
     </div>
     <div class="ppanel" role="tabpanel" id="panA" aria-labelledby="tabA" tabindex="0">
-      <div class="headline"><div id="rankChart"></div><div class="pcards" id="pcards" style="grid-template-columns:repeat(2,minmax(0,1fr));margin:0"></div></div>
-      <div class="movers"><div><h3>Biggest score gains, 2025 to 2026</h3><div class="pscroll"><table class="ptable" id="upT"></table></div></div><div><h3>Biggest score drops, 2025 to 2026</h3><div class="pscroll"><table class="ptable" id="dnT"></table></div></div></div>
-      <p class="pnote"><b>These moved at the same time as the rank. They are not a proven breakdown of why it moved.</b> Oxford rescales every score each edition, and changed its method for several measures (flagged). Ranks in the cards are among cities under 4 million.</p>
+      <div id="rankChart" style="max-width:640px;margin-bottom:22px"></div>
+      <div class="gb up2" id="gainBlock"></div>
+      <div class="gb dn2" id="dropBlock"></div>
+      <p class="pnote"><b>These moved at the same time as the rank; they don't prove why it moved.</b> Oxford rescales scores each edition and changed some methods (flagged).</p>
+      <p class="pnote"><b>Want the full data?</b> See Connor Oswald, Director of Research, for a deep dive.</p>
     </div>
     <div class="ppanel" role="tabpanel" id="panB" aria-labelledby="tabB" tabindex="0" hidden>
+      <p class="pnote" style="margin:0 0 12px">Peers are the 13 cities in JCC's <a href="https://mrronnoc32.github.io/JCCMunicipalFinance25/">How Jacksonville Pays for Itself</a>, chosen for how similar they are to Jacksonville.</p>
       <div class="cmpctl">
         <label>Measure <select id="cmpM"></select></label>
         <label>Compare with <select id="cmpP"></select></label>
@@ -397,66 +484,53 @@ h1,h2,h3{font-weight:700!important;font-stretch:normal!important;letter-spacing:
       <div id="cmpChart"></div>
       <div id="cmpWarn"></div>
       <details class="alln"><summary>See the numbers for all 14 cities</summary><div class="pscroll"><table class="ptable" id="cmpTable"></table></div></details>
-      <p class="pnote">Peers are the 13 cities in <i>How Jacksonville Pays for Itself</i> (JCC, 2026): 7 core and 6 extended. Scores are Oxford's 0 to 100 scores, rescaled each edition.</p>
     </div>
-  </section>
-
-  <section class="part" id="p2" aria-labelledby="p2H">
-    <header>
-      <div class="eyebrow">2 · Remaining work <span class="obs o">Observed</span></div>
-      <h2 id="p2H">Where Jacksonville stands on all 27 measures</h2>
-      <p>Jacksonville's rank on each measure among the <span class="u4n">845</span> cities under 4 million, 2026 edition (1st is best). This shows the breadth of the data; you don't need to read every row.</p>
-    </header>
-    <div id="tiles"></div>
-    <p class="pnote"><b>Want the full data?</b> See Connor Oswald, Director of Research, for a deep dive on all three editions.</p>
   </section>
 
   <section class="part" id="p3" aria-labelledby="p3H">
     <header>
-      <div class="eyebrow">3 · Priorities <span class="obs m">Modeled</span></div>
-      <h2 id="p3H">The levers with the most room to move the rank</h2>
-      <p>To compare levers fairly, each one is tested alone with the same assumption: <b>close half the gap</b> between Jacksonville and the typical value among the Top 50. Levers are ranked by the gain in Jacksonville's overall score, which is comparable across measures; places gained are shown too. Only locally actionable levers where Jacksonville trails the Top 50 are included.</p>
-      <p class="cmpwarn" style="background:var(--tint);border-color:var(--accent)"><b>Help move these.</b> Ask to join one of JCC's key workstreams: <b>Parks</b>, <b>VPK Education</b> and <b>Workforce Development</b>.</p>
+      <div class="eyebrow">2 · What could happen</div>
+      <h2 id="p3H">Move the levers. <em style="font-style:normal;color:var(--head)">Move the rank.</em></h2>
+      <p>These five levers have the most room to raise Jacksonville's overall score. Select a target area to see the levers it moves.</p>
     </header>
-    <div id="prioChart"></div>
-    <p class="pnote" id="prioNote"></p>
-  </section>
-
-  <section class="part calc" id="p4" aria-labelledby="cH">
-    <header>
-      <div class="eyebrow">4 · Scenario <span class="obs m">Modeled</span></div>
-      <h2 id="cH">Move the levers. Watch the rank.</h2>
-      <p>Each slider sets the <b>percent of the gap closed</b> between Jacksonville's value today and the Top 50 typical value. It is not a percent increase in the measure itself; the boxes under each slider show what it means in real units. These are scenarios, not forecasts: every other city stays at its 2026 score.</p>
-    </header>
-    <div class="calc-grid">
-      <div>
-        <div class="modebar">
-          <span class="seg" role="group" aria-label="Scenario mode"><button type="button" data-m="one" aria-pressed="true">One indicator</button><button type="button" data-m="combo" aria-pressed="false">Combined scenario</button></span>
-          <button type="button" class="cbtn solid" id="demoBtn">Load demo scenario</button>
-          <button type="button" class="cbtn" id="resetBtn">Reset all</button>
-          <p class="modenote" id="modeNote" aria-live="polite"></p>
-        </div>
-        <div class="groups" id="prioGroup"></div>
-        <div class="more">
-          <button class="morebtn" type="button" id="moreBtn" aria-expanded="false" aria-controls="moreBox">Show all 27 measures ▾</button>
-          <div id="moreBox" hidden>
-            <div class="filters" role="group" aria-labelledby="fLab" id="filters" style="margin-top:16px"></div>
-            <div class="groups" id="groups"></div>
+    <p class="legend2"><b style="color:var(--deep)">+ score pts</b> Points Jacksonville's overall score would gain &nbsp;·&nbsp; <b style="color:var(--deep)">▲ ranks</b> Places Jacksonville would climb</p>
+    <div id="leverMap"></div>
+    <div class="areas2" id="areaBtns" role="group" aria-label="Target areas"></div>
+    <p class="maplegend"><span class="ln solid"></span>Direct indicator <span class="ln dot"></span>Indirect, long-term effect</p>
+    <p class="pnote" style="margin-top:4px">Target areas are what we can do locally to improve the city. Some of their effects on the rank take years.</p>
+    <ul class="visually-hidden" id="mapText"></ul>
+    <p style="margin-top:14px"><b>Help move these levers.</b> <a href="https://jax365.org/focus-areas/" style="color:var(--accent);font-weight:700">Join a target team</a>.</p>
+    <div class="deeper"><button class="morebtn" type="button" id="calcBtn" aria-expanded="false" aria-controls="calcBox">Dive deeper: try the calculator ▾</button></div>
+    <div class="calcbox calc" id="calcBox" hidden>
+      <p style="max-width:70ch">Each slider closes part of the gap between Jacksonville today and the typical Top 50 city. Every other city stays where it is.</p>
+      <div class="calc-grid" style="margin-top:14px">
+        <div>
+          <div class="modebar">
+            <button type="button" class="cbtn solid" id="demoBtn">Load a demo</button>
+            <button type="button" class="cbtn" id="resetBtn">Reset all</button>
+            <label class="onechk"><input type="checkbox" id="oneChk"> Test one lever at a time</label>
+            <p class="modenote" id="modeNote" aria-live="polite"></p>
+          </div>
+          <div class="groups" id="prioGroup"></div>
+          <div class="more">
+            <button class="morebtn" type="button" id="moreBtn" aria-expanded="false" aria-controls="moreBox">Show all 27 measures ▾</button>
+            <div id="moreBox" hidden>
+              <div class="filters" role="group" aria-labelledby="fLab" id="filters" style="margin-top:16px"></div>
+              <div class="groups" id="groups"></div>
+            </div>
           </div>
         </div>
+        <aside class="panel" aria-labelledby="pH">
+          <div class="eyebrow" id="pH">Jacksonville's rank, cities under 4M</div>
+          <div class="rankrow"><span class="rank num" id="rank">97</span><span class="chg" id="chg">Today</span></div>
+          <div class="meter" aria-hidden="true"><div class="fill" id="fill"></div><div class="goal" id="goal"></div></div>
+          <div class="meterlbl"><span>Today: <span class="jr">97th</span></span><span>Top 50</span></div>
+          <p class="words" id="words" aria-live="polite"></p>
+          <div class="assump" id="assump"></div>
+          <p class="flagline">Ranks are estimates.</p>
+          <button class="howbtn" type="button" id="howBtn" aria-expanded="false" aria-controls="explain">How is this calculated? <span class="chev" aria-hidden="true">▾</span></button>
+        </aside>
       </div>
-      <aside class="panel" aria-labelledby="pH">
-        <div class="eyebrow" id="pH">Jacksonville's rank, cities under 4M</div>
-        <div class="rankrow"><span class="rank num" id="rank">97</span><span class="chg" id="chg">Baseline</span></div>
-        <div class="meter" aria-hidden="true"><div class="fill" id="fill"></div><div class="goal" id="goal"></div></div>
-        <div class="meterlbl"><span>Baseline: <span class="jr">97th</span></span><span>Top 50</span></div>
-        <p class="scorebox" id="scorebox"></p>
-        <p class="words" id="words" aria-live="polite"></p>
-        <div class="assump" id="assump"></div>
-        <p class="flagline">Ranks are estimates. Oxford doesn't publish its scoring formula, so slider effects come from curves fitted to its 2026 data.</p>
-        <button class="howbtn" type="button" id="howBtn" aria-expanded="false" aria-controls="explain">How is this calculated? <span class="chev" aria-hidden="true">▾</span></button>
-      </aside>
-    </div>
     <section class="explain" id="explain" aria-labelledby="xH" hidden>
       <div class="xhead">
         <div>
@@ -503,16 +577,19 @@ h1,h2,h3{font-weight:700!important;font-stretch:normal!important;letter-spacing:
       </div>
       <p class="xsrc">Data: Oxford Economics Global Cities Index 2026, used with Oxford Economics' written permission. Peers are the 845 cities with fewer than 4 million people in Oxford's own metro populations. With no levers moved, the page reproduces Oxford's 97th exactly. The fitted curves were chosen after the pre-registered methods failed to reproduce Oxford's formula.</p>
     </section>
+    </div>
   </section>
 
   <section class="part" id="p5" aria-labelledby="p5H">
     <header>
-      <div class="eyebrow">5 · Action</div>
-      <h2 id="p5H">What your organization can do</h2>
-      <p>The three priority levers, with steps a company or institution can take. Examples come from other cities and are sourced.</p>
+      <div class="eyebrow">3 · What you can do</div>
+      <h2 id="p5H">Three ways to help, starting today</h2>
     </header>
-    <div class="acts" id="acts"></div>
-    <div class="cta"><h3>Get involved</h3><p>Ask to join one of JCC's key workstreams: Parks, VPK Education and Workforce Development.</p><p style="margin-top:8px">For a deep dive on the data, the model or this calculator, contact Connor Oswald, Director of Research, Jacksonville Civic Council.</p></div>
+    <div class="acts3">
+      <div class="act3"><div class="k">Option 1</div><h3>Join a target team</h3><ul id="actAreas"></ul></div>
+      <div class="act3"><div class="k">Option 2</div><h3>Act on a top lever</h3><ul id="actLevers"></ul></div>
+      <div class="act3"><div class="k">Option 3</div><h3>Dig into the data</h3><p style="font-size:.93rem">Ask Connor Oswald and the JCC research team for a walkthrough of the data or the calculator.</p></div>
+    </div>
   </section>
 
   <footer class="sitefoot">Source: Oxford Economics Global Cities Index 2026, used with permission. Cities to watch: Oxford Economics, <a href="https://www.oxfordeconomics.com/global-cities-index-key-findings/">Global Cities Index key findings</a>. Built by the Jacksonville Civic Council.</footer>
@@ -534,7 +611,8 @@ const ord = n => { const s = ["th","st","nd","rd"], v = n % 100; return n + (s[(
 const canvas = document.getElementById("globe"), ctx = canvas.getContext("2d");
 let size = 600, dpr = 1, proj, path, rot = [40, -20], target = null, step = 0, spin = false, t0 = performance.now();
 const grat = d3.geoGraticule10();
-const ROT = {2: [81.8, -30.2], 3: [-8, -42], 4: [97, -40]};
+const ROT = {1: [-10, -46], 2: [81.8, -30.2], 3: [97, -40], 4: [97, -40]};
+let HL = -1;
 let fade = {big:1, top:0, jax:0, watch:0};
 const WATCH = new Set(D.watch);
 function resize(){
@@ -570,6 +648,11 @@ function draw(){
     ctx.globalAlpha = fade.top * 0.25; ctx.beginPath(); ctx.arc(p[0], p[1], 8 * R, 0, 6.2832); ctx.fill();
   }
   ctx.globalAlpha = 1;
+  /* highlighted US Top 50 city (hover or focus in the list) */
+  if (HL >= 0 && step === 3) { const c = C[HL]; if (d3.geoDistance(c.xy, center) < 1.45) { const p = proj(c.xy);
+    ctx.strokeStyle = cssv("--deep"); ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(p[0], p[1], 9 * R, 0, 6.2832); ctx.stroke();
+    ctx.font = `700 ${Math.round(12 * R + 4)}px Figtree, Arial, sans-serif`; ctx.textBaseline = "middle"; const w = ctx.measureText(c.n).width;
+    ctx.fillStyle = "rgba(255,255,255,0.95)"; ctx.fillRect(p[0] + 12 * R - 4, p[1] - 11, w + 8, 22); ctx.fillStyle = cssv("--deep"); ctx.fillText(c.n, p[0] + 12 * R, p[1]); } }
   /* cities to watch */
   if (fade.watch > 0.02) { ctx.font = `700 ${Math.round(12 * R + 3)}px Figtree, Arial, sans-serif`; ctx.textBaseline = "middle";
     for (const k of WATCH) { if (k === JI) continue; const c = C[k]; if (d3.geoDistance(c.xy, center) > 1.4) continue; const p = proj(c.xy);
@@ -592,7 +675,7 @@ function draw(){
 }
 const lerp = (a, b, t) => a + (b - a) * t;
 function tick(now){
-  const goal = {big: step >= 1 ? 0.12 : 1, top: step === 3 ? 1 : step === 4 ? 0.2 : 0, jax: step >= 2 ? 1 : 0, watch: step >= 4 ? 1 : 0};
+  const goal = {big: step >= 1 ? 0.04 : 1, top: step === 3 ? 1 : step === 4 ? 0.2 : 0, jax: step >= 2 ? 1 : 0, watch: step >= 4 ? 1 : 0};
   for (const k in fade) fade[k] = RM ? goal[k] : lerp(fade[k], goal[k], 0.08);
   if (target) {
     const dl = ((target[0] - rot[0] + 540) % 360) - 180;
@@ -606,7 +689,7 @@ function tick(now){
 function setStep(s){
   step = s; target = ROT[s] || null; if (!target && RM) rot = [40, -20];
   document.querySelectorAll(".step").forEach(el => el.classList.toggle("on", +el.dataset.step === s));
-  if (RM) { const g = {big: s >= 1 ? 0.12 : 1, top: s === 3 ? 1 : s === 4 ? 0.2 : 0, jax: s >= 2 ? 1 : 0, watch: s >= 4 ? 1 : 0}; Object.assign(fade, g); if (target) rot = target.slice(); draw(); }
+  if (RM) { const g = {big: s >= 1 ? 0.04 : 1, top: s === 3 ? 1 : s === 4 ? 0.2 : 0, jax: s >= 2 ? 1 : 0, watch: s >= 4 ? 1 : 0}; Object.assign(fade, g); if (target) rot = target.slice(); draw(); }
 }
 const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) setStep(+e.target.dataset.step); }); }, {rootMargin: "-45% 0px -45% 0px"});
 document.querySelectorAll(".step").forEach(el => io.observe(el));
@@ -620,12 +703,15 @@ const JR = C[JI].r, NU4 = U4.length, TOP = U4.filter(k => k !== JI && C[k].r <= 
 document.querySelectorAll(".u4n").forEach(e => e.textContent = NU4.toLocaleString("en-US"));
 document.querySelectorAll(".jr").forEach(e => e.textContent = ord(JR));
 document.getElementById("aheadN").textContent = (NU4 - JR).toLocaleString("en-US");
-document.getElementById("fiftieth").textContent = C[TOP.find(k => C[k].r === 50)].n;
-["gapN", "gapN2"].forEach(id => document.getElementById(id).textContent = JR - 50);
+document.getElementById("gapN2").textContent = JR - 50;
+document.getElementById("climbN").textContent = D.u4h.overall[1] - D.u4h.overall[2]; document.getElementById("r25a").textContent = ord(D.u4h.overall[1]);
+document.getElementById("top50List").innerHTML = TOP.slice().sort((a, b) => C[a].r - C[b].r).map(k => `<li>${C[k].n}${C[k].c === "United States" ? "" : ", " + C[k].c}</li>`).join("");
 const USTOP = TOP.filter(k => C[k].us);
 const NUMW = ["zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve"];
 document.getElementById("usN").textContent = (NUMW[USTOP.length] || USTOP.length).replace(/^./, s => s.toUpperCase());
-document.getElementById("usTop").innerHTML = USTOP.map(k => `<li><b>${C[k].r}</b>${C[k].n}</li>`).join("");
+document.getElementById("usTop").innerHTML = USTOP.map(k => `<li tabindex="0" data-k="${k}"><b>${C[k].r}</b>${C[k].n}</li>`).join("");
+const usEl = document.getElementById("usTop"), setHL = e => { const li = e.target.closest("li[data-k]"); HL = li ? +li.dataset.k : -1; draw(); };
+["mouseover", "focusin"].forEach(t => usEl.addEventListener(t, setHL)); ["mouseleave", "focusout"].forEach(t => usEl.addEventListener(t, () => { HL = -1; draw(); }));
 document.getElementById("watchList").innerHTML = D.watch.map(k => `<li><b>${C[k].r}</b>${C[k].n}${C[k].c === "Canada" ? ", Canada" : ""}</li>`).join("");
 function drawStrip(){
   const box = document.getElementById("strip"), W = Math.max(320, Math.min(1240, box.clientWidth || 900)), H = 120, m = {l:8, r:8};
@@ -666,81 +752,66 @@ const B = evalD({}), BASE = B.r;
 const ALONE = Object.fromEntries(LV.map(L => [L.k, BASE - rankWith({[L.k]: scoreDelta(L, 1)})]));
 /* priorities: each local lever alone, half the gap to the Top 50 typical value, ranked by overall-score gain */
 const PRIO = LV.filter(L => L.ctrl === "L" && !L.ahead).map(L => { const e = evalD({[L.k]: scoreDelta(L, .5)}); return {L, dt: e.t - B.t, dr: BASE - e.r}; }).sort((a, b) => b.dt - a.dt);
-const P5 = PRIO.slice(0, 5).map(p => p.L.k), P3 = P5.slice(0, 3);
+const P5 = PRIO.slice(0, 5).map(p => p.L.k);
 const PPT = new Set(["housing", "emp_growth", "gdp_growth", "pop_growth", "foreign"]); /* units that are already percentages */
 function change(L, v){ const d = v - L.jax; if (Math.abs(d) < 1e-12) return "No change";
   const sg = d > 0 ? "+" : "−", a = fmt(L, Math.abs(d), Math.abs(d) < Math.pow(10, -L.dp) ? 2 : 0);
-  return PPT.has(L.k) ? `${sg}${a} percentage points` : `${sg}${a} ${L.unit.split(',')[0]} (${sg}${Math.abs(d / L.jax * 100).toFixed(Math.abs(d / L.jax) < .01 ? 1 : 0)}%)`; }
+  return PPT.has(L.k) ? `${sg}${a} percentage points` : `${sg}${a} (${sg}${Math.abs(d / L.jax * 100).toFixed(Math.abs(d / L.jax) < .01 ? 1 : 0)}%)`; }
+
+const DESC = {gdp_size: "size of the metro economy, GDP in US$ billions", gdp_growth: "Oxford's five-year GDP growth forecast", econ_stab: "swings in yearly growth; lower is steadier", gdp_pc: "GDP per person", emp_growth: "Oxford's five-year job growth forecast", econ_div: "how concentrated the economy is in a few sectors; lower is more diverse", pop_growth: "yearly population growth", age: "older residents relative to working-age residents", univ: "local universities, weighted by global ranking", hq: "headquarters of the world's 10,000 largest firms", edu: "adult education levels, measured for Florida", foreign: "share of residents born outside the US", ineq: "how evenly income is shared; lower Gini is more equal", inc_pc: "income per resident, adjusted for prices", housing: "housing and utilities as a share of income", life: "life expectancy, measured for Florida", crime: "homicide rate per 100,000 residents", internet: "internet speed, 2024 edition only", rec: "parks, museums and cultural venues", air: "fine-particle air pollution; lower is cleaner", emis: "emissions per dollar of GDP; lower is cleaner", disaster: "exposure to natural hazards", temp: "temperature swings from normal", rain: "rainfall swings from normal", inst: "institutions, measured for the US as a whole", polstab: "political stability, measured for the US as a whole", busenv: "business environment, measured for the US as a whole", civlib: "civil liberties, measured for the US as a whole"};
+const BETTER = {gdp_size: "a larger economy", gdp_growth: "faster expected growth", econ_stab: "steadier growth", gdp_pc: "more output per person", emp_growth: "faster expected job growth", econ_div: "a more diverse economy", pop_growth: "faster population growth", age: "a younger population", univ: "stronger universities", hq: "more major headquarters", edu: "more educated adults", foreign: "more foreign-born residents", ineq: "more evenly shared income", inc_pc: "higher incomes", housing: "lower housing costs", life: "longer life expectancy", crime: "a lower homicide rate", internet: "faster internet", rec: "more parks, museums and venues", air: "cleaner air", emis: "cleaner growth", disaster: "less exposure to natural hazards", temp: "smaller temperature swings", rain: "smaller rainfall swings", inst: "stronger institutions", polstab: "more political stability", busenv: "a better business environment", civlib: "stronger civil liberties"};
 const CTRL = {L: ["Local"], S: ["Regional or state"], N: ["National"], X: ["Not actionable"]};
 const GROUPS = [["econ", "Economy"], ["hc", "Talent"], ["qol", "Quality of life"], ["env", "Environment"], ["gov", "Governance"]];
-/* ----- "In real life" (templates: arts and culture, public safety, housing) ----- */
 const RW = D.raw, RL = D.real;
-const POOL_U4 = C.map((c, k) => k).filter(k => C[k].u4), POOL_US = C.map((c, k) => k).filter(k => C[k].us);
-const cname = j => C[j].n + (C[j].c === "United States" ? "" : ", " + C[j].c);
-const nearC = (k, v, pool, n) => pool.filter(j => j !== JI && RW[k][j] != null).sort((a, b) => Math.abs(RW[k][a] - v) - Math.abs(RW[k][b] - v)).slice(0, n).map(cname);
+const POOL_U4 = C.map((c, k) => k).filter(k => C[k].u4);
+const nearC = (k, v, pool, n) => pool.filter(j => j !== JI && RW[k][j] != null).sort((a, b) => Math.abs(RW[k][a] - v) - Math.abs(RW[k][b] - v)).slice(0, n).map(j => C[j].n);
 const usd = x => "$" + (Math.round(x / 10) * 10).toLocaleString("en-US");
 const listJoin = a => a.length < 2 ? a.join("") : a.slice(0, -1).join(", ") + " and " + a[a.length - 1];
+/* one plain line in real terms */
 const REAL = {
-  crime: v => { const pop = RL.crime.pop, h0 = Math.round(LVk.crime.jax * pop / 1e5), h = Math.round(v * pop / 1e5);
-    return `At <b>${v.toFixed(1)}</b> homicides per 100,000, the metro's ${(pop / 1e6).toFixed(2)} million people would see about <b>${h}</b> homicides a year` + (h < h0 ? `, about <b>${h0 - h} fewer</b> than the ${h0} implied by today's rate.` : `, the level implied by today's rate.`) + ` The lowest US rates in Oxford's data are in ${listJoin(RL.crime.low.map(([n, x]) => `${n} (${x.toFixed(1)})`))}. The Top 50 typical rate, ${LVk.crime.med.toFixed(1)}, is lower than any US city's.`; },
-  housing: v => { const inc = RL.housing.inc * 1000, a0 = LVk.housing.jax / 100 * inc, a = v / 100 * inc;
-    return `At <b>${v.toFixed(1)}%</b> of income, housing and utilities would cost about <b>${usd(a)}</b> per resident a year` + (a < a0 - 5 ? `, about <b>${usd(a0 - a)} less</b> than today's ${usd(a0)}.` : `, today's level.`) + ` (This uses Oxford's income per person, ${usd(inc)}.) US cities near this share: ${listJoin(nearC("housing", v, POOL_US, 3))}.`; },
-  rec: v => `An index of <b>${v.toFixed(3)}</b> is <b>${(v / LVk.rec.jax).toFixed(1)} times</b> today's. Cities near this level: ${listJoin(nearC("rec", v, POOL_U4, 3))}. Oxford's index averages the total number of sites with sites per resident, so it rewards both. No US city under 4 million is above ${RL.rec.usmaxv.toFixed(2)} (${listJoin(RL.rec.usmax)}). ${RL.rec.osm}`
+  crime: v => { const pop = RL.crime.pop, h0 = Math.round(LVk.crime.jax * pop / 1e5), h = Math.round(v * pop / 1e5); return `About ${h0} → <b>${h}</b> homicides a year across the metro.`; },
+  housing: v => { const inc = RL.housing.inc * 1000; return `About ${usd(LVk.housing.jax / 100 * inc)} → <b>${usd(v / 100 * inc)}</b> a year per resident on housing.`; },
+  rec: v => `<b>${(v / LVk.rec.jax).toFixed(1)} times</b> today's level, near ${listJoin(nearC("rec", v, POOL_U4, 2))}.`
 };
-function leverHTML(L, pn){ const ex = RL[L.k] && RL[L.k].ex;
-  const srcs = ex => `<a href="${ex.url}" target="_blank" rel="noopener">Source: ${ex.src}<span class="visually-hidden"> (opens in a new tab)</span></a>` + (ex.url2 ? `; <a href="${ex.url2}" target="_blank" rel="noopener">${ex.src2}<span class="visually-hidden"> (opens in a new tab)</span></a>` : "");
+const isOne = () => document.getElementById("oneChk").checked;
+function leverHTML(L, pn){
   return `<div class="lever" id="lv-${L.k}" data-ctrl="${L.ctrl}">
-    <div class="lv-top"><label for="s-${L.k}">${L.label}<span class="tag tag-${L.ctrl}">${CTRL[L.ctrl][0]}</span>${pn ? `<span class="prio">${pn <= 3 ? "Priority " + pn : "Demo lever " + pn}</span>` : ""}</label><span class="gain">${ALONE[L.k] > 0 ? `up to ▲${ALONE[L.k]} on its own` : "little effect on its own"}</span></div>
-    <div class="lv-metric">${L.metric} (${L.unit})${L.rough ? ' <span class="rough">· rough estimate</span>' : ""}</div>
-    ${L.ahead ? '<div class="ahead">Jacksonville already beats the Top 50 typical value here, so this slider runs to the best tenth of the Top 50.</div>' : ""}
-    <div class="slab"><span>Percent of the gap closed</span><span id="pc-${L.k}">0%</span></div>
+    <div class="lv-top"><label for="s-${L.k}">${L.label}<span class="tag tag-${L.ctrl}">${CTRL[L.ctrl][0]}</span>${pn ? `<span class="prio">#${pn}</span>` : ""}</label></div>
+    <div class="lv-metric">${DESC[L.k][0].toUpperCase() + DESC[L.k].slice(1)}${L.rough ? ' <span class="rough">· rough estimate</span>' : ""}</div>
+    <div class="slab"><span>Gap closed</span><span id="pc-${L.k}">0%</span></div>
     <input type="range" id="s-${L.k}" min="0" max="100" step="5" value="0">
-    <div class="vals4"><div><span class="k">Baseline</span><b>${fmt(L, L.jax)}</b></div><div><span class="k">Scenario</span><b id="v-${L.k}">${fmt(L, L.jax)}</b></div><div><span class="k">Change</span><b id="d-${L.k}">No change</b></div><div><span class="k">${L.tgtLab}</span><b>${fmt(L, L.med)}</b></div></div>
+    <div class="vals4"><div><span class="k">Today</span><b>${fmt(L, L.jax)}</b></div><div><span class="k">Scenario</span><b id="v-${L.k}">${fmt(L, L.jax)}</b></div><div><span class="k">Change</span><b id="d-${L.k}">None</b></div><div><span class="k">${L.ahead ? "Best Top 50" : "Top 50 typical"}</span><b>${fmt(L, L.med)}</b></div></div>
+    ${REAL[L.k] ? `<p class="effect" id="rl-${L.k}"></p>` : ""}
     <p class="effect" id="e-${L.k}" hidden></p>
-    <p class="idea"><strong>${L.ctrl === "L" ? "What your organization can do:" : "Who controls it:"}</strong> ${L.idea}</p>
-    ${ex ? `<div class="real"><h4>In real life</h4>${REAL[L.k] ? `<p class="calcline" id="rl-${L.k}"></p>` : ""}<p class="ex"><b>Example: ${ex.city}.</b> ${ex.text} ${srcs(ex)}</p></div>` : ""}
   </div>`; }
-document.getElementById("prioGroup").innerHTML = `<section class="group" aria-labelledby="g-prio"><h3 id="g-prio">The three priority levers <small>ranked in section 3</small></h3>` + P3.map((k, i) => leverHTML(LVk[k], i + 1)).join("") + `</section>`;
-document.getElementById("groups").innerHTML = GROUPS.map(([g, t]) => `<section class="group" id="grp-${g}" aria-labelledby="g-${g}"><h3 id="g-${g}">${t} <small>${Math.round(W[g] * 100)}% of the total score</small></h3>` + LV.filter(L => L.p === g && !P3.includes(L.k)).map(L => leverHTML(L, P5.indexOf(L.k) + 1)).join("") + `</section>`).join("");
-/* filter (applies to the other 22) */
+const P3 = P5.slice(0, 3);
+document.getElementById("prioGroup").innerHTML = `<section class="group" aria-labelledby="g-prio"><h3 id="g-prio">Top three levers</h3>` + P3.map((k, i) => leverHTML(LVk[k], i + 1)).join("") + `</section>`;
+document.getElementById("groups").innerHTML = GROUPS.map(([g, t]) => `<section class="group" id="grp-${g}" aria-labelledby="g-${g}"><h3 id="g-${g}">${t}</h3>` + LV.filter(L => L.p === g && !P3.includes(L.k)).map(L => leverHTML(L, P5.indexOf(L.k) + 1)).join("") + `</section>`).join("");
 const SHOW = {L: true, S: false, N: false, X: false}, fEl = document.getElementById("filters");
-fEl.innerHTML = `<span class="flab" id="fLab">Show:</span>` + Object.keys(CTRL).map(c => `<button type="button" class="fbtn" data-c="${c}" aria-pressed="${SHOW[c]}">${CTRL[c][0]} <span class="n">${LV.filter(L => L.ctrl === c && !P3.includes(L.k)).length}</span></button>`).join("") + `<p class="fnote" id="fnote" aria-live="polite"></p>`;
+fEl.innerHTML = `<span class="flab" id="fLab">Show:</span>` + Object.keys(CTRL).map(c => `<button type="button" class="fbtn" data-c="${c}" aria-pressed="${SHOW[c]}">${CTRL[c][0]}</button>`).join("") + `<p class="fnote" id="fnote" aria-live="polite"></p>`;
+const moreBtn = document.getElementById("moreBtn"), moreBox = document.getElementById("moreBox");
 function applyFilter(){
   LV.filter(L => !P3.includes(L.k)).forEach(L => { document.getElementById("lv-" + L.k).hidden = !SHOW[L.ctrl]; });
   GROUPS.forEach(([g]) => { document.getElementById("grp-" + g).hidden = !LV.some(L => L.p === g && !P3.includes(L.k) && SHOW[L.ctrl]); });
   const hid = LV.filter(L => !P3.includes(L.k) && (!SHOW[L.ctrl] || moreBox.hidden) && state[L.k] > 0).length;
-  document.getElementById("fnote").textContent = hid ? `${hid} moved ${hid === 1 ? "lever is" : "levers are"} hidden but still count in the rank.` : "";
+  document.getElementById("fnote").textContent = hid ? `${hid} hidden ${hid === 1 ? "lever is" : "levers are"} still counted.` : "";
 }
 fEl.addEventListener("click", e => { const b = e.target.closest(".fbtn"); if (!b) return; SHOW[b.dataset.c] = !SHOW[b.dataset.c]; b.setAttribute("aria-pressed", SHOW[b.dataset.c]); applyFilter(); });
-const moreBtn = document.getElementById("moreBtn"), moreBox = document.getElementById("moreBox");
-moreBtn.addEventListener("click", () => { moreBox.hidden = !moreBox.hidden; moreBtn.setAttribute("aria-expanded", !moreBox.hidden); moreBtn.textContent = moreBox.hidden ? "Show all 27 measures ▾" : "Hide the other 24 measures ▴"; applyFilter(); });
-/* modes */
-let MODE = "one";
+moreBtn.addEventListener("click", () => { moreBox.hidden = !moreBox.hidden; moreBtn.setAttribute("aria-expanded", !moreBox.hidden); moreBtn.textContent = moreBox.hidden ? "Show all 27 measures ▾" : "Hide the other 24 ▴"; applyFilter(); });
+const calcBtn = document.getElementById("calcBtn"), calcBox = document.getElementById("calcBox");
+calcBtn.addEventListener("click", () => { calcBox.hidden = !calcBox.hidden; calcBtn.setAttribute("aria-expanded", !calcBox.hidden); calcBtn.textContent = calcBox.hidden ? "Dive deeper: try the calculator ▾" : "Hide the calculator ▴"; });
 const modeNote = document.getElementById("modeNote");
-const MODETXT = {one: "One indicator: moving a slider resets the others, so you see that lever's effect alone.", combo: "Combined scenario: changes add up across levers."};
-function setMode(m, why){ MODE = m; document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === m));
-  modeNote.textContent = MODETXT[m] + (why || ""); }
-document.querySelector(".seg").addEventListener("click", e => { const b = e.target.closest("button"); if (!b || b.dataset.m === MODE) return;
-  if (b.dataset.m === "one") { const n = LV.filter(L => state[L.k] > 0).length; setAll({}); setMode("one", n ? " Your sliders were reset." : ""); }
-  else setMode("combo", " Your current setting is kept."); });
 function setAll(map){ LV.forEach(L => { state[L.k] = map[L.k] || 0; document.getElementById("s-" + L.k).value = state[L.k]; }); update(); }
-document.getElementById("resetBtn").addEventListener("click", () => { setAll({}); modeNote.textContent = MODETXT[MODE] + " Everything is back to the 2026 baseline."; });
-const DEMO = Object.fromEntries(P5.map(k => [k, 50]));
-document.getElementById("demoBtn").addEventListener("click", () => { setMode("combo"); if (moreBox.hidden) moreBtn.click(); setAll(DEMO); modeNote.textContent = MODETXT.combo + " Demo loaded: the top five levers in section 3, each closing half its gap. Levers 4 and 5 are in the full list of 27 measures."; document.getElementById("rank").scrollIntoView({behavior: RM ? "auto" : "smooth", block: "center"}); });
-setMode("one");
-/* render */
+document.getElementById("oneChk").addEventListener("change", e => { if (e.target.checked) { setAll({}); modeNote.textContent = "Moving a slider now resets the others."; } else modeNote.textContent = "Changes now add up."; });
+document.getElementById("resetBtn").addEventListener("click", () => { setAll({}); modeNote.textContent = "Back to today."; });
+document.getElementById("demoBtn").addEventListener("click", () => { document.getElementById("oneChk").checked = false; if (moreBox.hidden) moreBtn.click(); setAll(Object.fromEntries(P5.map(k => [k, 50]))); modeNote.textContent = "Demo: the top five levers, each closing half its gap."; });
 const rankEl = document.getElementById("rank"), chgEl = document.getElementById("chg"), wordsEl = document.getElementById("words"), fillEl = document.getElementById("fill"), goalEl = document.getElementById("goal");
 const span = BASE - 1; goalEl.style.left = ((BASE - 50) / span * 100) + "%";
 let shown = BASE, animT = null, wordsT = null;
 function analog(r){ const k = C.findIndex((c, i) => i !== JI && c.u4 && c.r === (r >= BASE ? r + 1 : r)); return k >= 0 ? C[k] : null; }
-const f2 = x => x.toFixed(2), gapf = x => Math.max(x, 0.001).toFixed(x < 0.1 ? 3 : 2);
-function effectText(L, f){
-  const d = scoreDelta(L, f), s0 = S0[L.k][JI], e = evalD({[L.k]: d});
-  let t = `Metric score <b>${s0.toFixed(1)}</b> → <b>${(s0 + d).toFixed(1)}</b>. On its own, the overall score goes <b>${f2(B.t)}</b> → <b>${f2(e.t)}</b> (${e.t >= B.t ? "+" : "−"}${Math.abs(e.t - B.t).toFixed(2)})`;
-  if (d < 0.05) t += `. The fitted curve is almost flat here, so this change barely registers in Oxford's score.`;
-  if (e.r < BASE) t += ` and the rank to <b>${ord(e.r)}</b>.`;
-  else t += `, but the rank stays ${ord(BASE)}: passing the next city up, ${C[B.above].n}, takes ${gapf(B.tAbove - e.t)} more points.`;
-  return t; }
+const gapf = x => Math.max(x, 0.001).toFixed(x < 0.1 ? 3 : 2);
+function effectText(L, f){ const e = evalD({[L.k]: scoreDelta(L, f)});
+  return e.r < BASE ? `On its own: <b>▲ ${BASE - e.r}</b> to ${ord(e.r)}.` : `On its own: not enough to pass ${C[B.above].n} (needs ${gapf(B.tAbove - e.t)} more points).`; }
 function update(){
   const delta = {}; LV.forEach(L => { const f = state[L.k] / 100; if (f) delta[L.k] = scoreDelta(L, f); });
   const E = evalD(delta), r = E.r, dd = BASE - r, moved = LV.filter(L => state[L.k] > 0);
@@ -748,7 +819,7 @@ function update(){
     el.setAttribute("aria-valuetext", `${state[L.k]}% of the gap closed: ${fmt(L, v)} ${L.unit}`);
     document.getElementById("pc-" + L.k).textContent = state[L.k] + "%";
     document.getElementById("v-" + L.k).textContent = fmt(L, v);
-    document.getElementById("d-" + L.k).textContent = change(L, v);
+    document.getElementById("d-" + L.k).textContent = f ? change(L, v) : "None";
     const ef = document.getElementById("e-" + L.k); ef.hidden = !f; if (f) ef.innerHTML = effectText(L, f);
     document.getElementById("lv-" + L.k).classList.toggle("moved", f > 0);
     if (REAL[L.k]) document.getElementById("rl-" + L.k).innerHTML = REAL[L.k](v); });
@@ -758,22 +829,19 @@ function update(){
   const go = now => { const t = RM ? 1 : Math.min(1, (now - t1) / 450), e = 1 - Math.pow(1 - t, 3); shown = Math.round(from + (r - from) * e); rankEl.textContent = shown; if (t < 1) animT = requestAnimationFrame(go); };
   animT = requestAnimationFrame(go);
   rankEl.classList.toggle("in", r <= 50);
-  chgEl.textContent = dd > 0 ? `▲ ${dd} places` : dd < 0 ? `▼ ${-dd}` : moved.length ? "No change" : "Baseline"; chgEl.className = "chg" + (dd > 0 ? " up" : "");
+  chgEl.textContent = dd > 0 ? `▲ ${dd} places` : dd < 0 ? `▼ ${-dd}` : moved.length ? "No change" : "Today"; chgEl.className = "chg" + (dd > 0 ? " up" : "");
   fillEl.style.width = Math.max(0, Math.min(100, dd / span * 100)) + "%";
-  document.getElementById("scorebox").innerHTML = `Overall score <b>${f2(B.t)}</b>${moved.length ? ` → <b>${f2(E.t)}</b>` : ""}` + (E.above >= 0 ? `<br>Next city up: ${C[E.above].n}, <b>${gapf(E.tAbove - E.t)}</b> points ahead` : "");
   const a = analog(r);
-  const msg = !moved.length ? `Jacksonville ranks ${ord(BASE)} of ${NU4} today. Move a lever, or load the demo.`
-    : r <= 50 ? `About ${ord(r)}: inside the Top 50, about where ${a ? a.n : "a Top 50 city"} ranks today.`
+  const msg = !moved.length ? `Move a slider or load the demo.` : r <= 50 ? `About ${ord(r)}: inside the Top 50, about where ${a ? a.n : "a Top 50 city"} ranks today.`
     : `About ${ord(r)}, roughly where ${a ? a.n + (a.c === "United States" ? "" : ", " + a.c) : "a peer city"} ranks today. Still ${r - 50} places from the Top 50.`;
   clearTimeout(wordsT); wordsT = setTimeout(() => { wordsEl.textContent = msg; }, 250);
-  document.getElementById("assump").innerHTML = `<h3>Assumptions in this scenario</h3>` + (moved.length ? `<ul>${moved.map(L => `<li>${L.label}: <b>${fmt(L, L.jax)}</b> → <b>${fmt(L, valAt(L, state[L.k] / 100))}</b> ${L.unit} (${state[L.k]}% of the gap)</li>`).join("")}</ul>` : `<p>None. All values are Oxford's 2026 figures.</p>`);
+  document.getElementById("assump").innerHTML = moved.length ? `<h3>Your changes</h3><ul>${moved.map(L => `<li>${L.label}: <b>${fmt(L, L.jax)}</b> → <b>${fmt(L, valAt(L, state[L.k] / 100))}</b></li>`).join("")}</ul>` : "";
 }
-document.querySelector(".calc-grid").addEventListener("input", e => { if (!e.target.id || !e.target.id.startsWith("s-")) return; const k = e.target.id.slice(2);
-  if (MODE === "one") LV.forEach(L => { if (L.k !== k && state[L.k]) { state[L.k] = 0; document.getElementById("s-" + L.k).value = 0; } });
+document.querySelector("#calcBox .calc-grid").addEventListener("input", e => { if (!e.target.id || !e.target.id.startsWith("s-")) return; const k = e.target.id.slice(2);
+  if (isOne()) LV.forEach(L => { if (L.k !== k && state[L.k]) { state[L.k] = 0; document.getElementById("s-" + L.k).value = 0; } });
   state[k] = +e.target.value; update(); });
 update();
-
-/* ===================== explainer ===================== */
+/* explainer */
 const howBtn = document.getElementById("howBtn"), xPanel = document.getElementById("explain"), xClose = document.getElementById("xClose");
 function setExplain(open, focusBack){ xPanel.hidden = !open; howBtn.setAttribute("aria-expanded", open);
   if (open) { xPanel.scrollIntoView({behavior: RM ? "auto" : "smooth", block: "start"}); document.getElementById("xH").setAttribute("tabindex", "-1"); document.getElementById("xH").focus({preventScroll: true}); }
@@ -817,7 +885,7 @@ mSel.value = "i:crime";
 pSel.innerHTML = [["core", "Core peers"], ["extended", "Extended peers"]].map(([t, l]) => `<optgroup label="${l}">${PC.filter(c => c.tier === t).map(c => `<option value="${c.n}">${c.n}</option>`).join("")}</optgroup>`).join("");
 pSel.value = "Nashville";
 const series = (c, m) => m === "o" ? c.overall : m.startsWith("p:") ? c.pil[m.slice(2)] : c.ind[m.slice(2)];
-const mLabel = m => m === "o" ? "Overall score" : m.startsWith("p:") ? PNAME[m.slice(2)] + " pillar score" : INAME[m.slice(2)];
+const mLabel = m => m === "o" ? "Overall" : m.startsWith("p:") ? PNAME[m.slice(2)] : INAME[m.slice(2)];
 function drawCmp(){
   const m = mSel.value, peer = PC.find(c => c.n === pSel.value), box = document.getElementById("cmpChart");
   const Wd = Math.max(300, Math.min(900, box.clientWidth || 700)), narrow = Wd < 520, Hd = narrow ? 250 : 300, mg = {l: 38, r: narrow ? 104 : 140, t: 16, b: 34};
@@ -844,10 +912,12 @@ function drawCmp(){
   const ej = ends(series(PJ, m)), ep = ends(series(peer, m));
   const desc = (n, e) => e ? `${n} went from ${f1(e[0][0])} (${YRS[e[0][1]]}) to ${f1(e[1][0])} (${YRS[e[1][1]]})` : `${n} has only one edition`;
   const gap = lj[1] - lp[1];
-  document.getElementById("cmpSum").innerHTML = `<b>${mLabel(m)}.</b> ${desc("Jacksonville", ej)}; ${desc(peer.n, ep)}. In ${YRS[lj[0]]}, Jacksonville is <b>${Math.abs(gap).toFixed(1)} points ${gap >= 0 ? "ahead of" : "behind"}</b> ${peer.n}.`;
+  const md = m.startsWith("i:") ? DESC[m.slice(2)] : m === "o" ? "Oxford's overall score" : PNAME[m.slice(2)] + " pillar, " + Math.round(W[m.slice(2)] * 100) + "% of the overall score";
+  const better = m.startsWith("i:") ? BETTER[m.slice(2)] : null, hiN = gap > 0.05 ? "Jacksonville" : gap < -0.05 ? peer.n : null, loN = hiN === "Jacksonville" ? peer.n : "Jacksonville";
+  document.getElementById("cmpSum").innerHTML = `<b>${mLabel(m)}</b> (${md}). ` + (hiN ? `${hiN} scores higher than ${loN} in ${YRS[lj[0]]}${better ? `, which means ${better}` : ""}.` : `Jacksonville and ${peer.n} score about the same in ${YRS[lj[0]]}.`) + ` <span style="color:var(--ink-2)">Jacksonville ${ej ? f1(ej[0][0]) + " → " : ""}${f1(lj[1])}; ${peer.n} ${ep ? f1(ep[0][0]) + " → " : ""}${f1(lp[1])}.</span>`;
   const k = m.startsWith("i:") ? m.slice(2) : null;
   let warn = k && MNOTE[k] ? `<b>Note:</b> ${MNOTE[k]}.` : "";
-  if (k === "crime") warn += " Oxford used the same homicide figures for every US city in the 2025 and 2026 editions, so any change here comes from other cities' data, not from Jacksonville's or " + peer.n + "'s. The 2024 drop in murders in Jacksonville isn't in these numbers yet.";
+  if (k === "crime") warn += " Oxford didn't update US homicide rates between the 2025 and 2026 editions: each US city has the same rate in both. Score changes come from rescaling. Jacksonville's 2024 drop in murders isn't in these numbers yet.";
   document.getElementById("cmpWarn").innerHTML = warn ? `<p class="cmpwarn">${warn}</p>` : "";
   document.getElementById("cmpTable").innerHTML = `<caption>${mLabel(m)}, Oxford score by edition</caption><thead><tr><th scope="col">City</th><th scope="col">Peer group</th>${YRS.map(y => `<th scope="col" class="n">${y}</th>`).join("")}<th scope="col" class="n">Change</th></tr></thead><tbody>` +
     PC.map(c => { const a = series(c, m); return `<tr${c === PJ ? ' style="background:var(--jax-soft);font-weight:700"' : c === peer ? ' style="font-weight:700"' : ""}><th scope="row" style="text-align:left;font-weight:inherit">${c.n}</th><td>${c.tier === "subject" ? "–" : c.tier === "core" ? "Core" : "Extended"}</td>${a.map(v => `<td class="n">${f1(v)}</td>`).join("")}<td class="n">${chgCell(a)}</td></tr>`; }).join("") + `</tbody>`;
@@ -855,47 +925,95 @@ function drawCmp(){
 [mSel, pSel, allBox].forEach(el => el.addEventListener("change", drawCmp));
 let cmpT = null; window.addEventListener("resize", () => { clearTimeout(cmpT); cmpT = setTimeout(() => { if (!document.getElementById("panB").hidden) drawCmp(); }, 150); });
 
-/* ===================== part 1: progress headline ===================== */
-const H = D.u4h;
-document.getElementById("upN").textContent = H.overall[1] - H.overall[2];
-document.getElementById("r25").textContent = ord(H.overall[1]); document.getElementById("r26").textContent = ord(H.overall[2]);
-(function rankChart(){ const box = document.getElementById("rankChart"), Wd = Math.max(300, Math.min(620, box.clientWidth || 560)), Hd = 260, m = {l: 44, r: 24, t: 20, b: 34};
-  const y = d3.scaleLinear().domain([1, 140]).range([m.t, Hd - m.b]), x = i => m.l + 30 + i * (Wd - m.l - m.r - 60) / 2;
-  let g = `<svg viewBox="0 0 ${Wd} ${Hd}" role="img" aria-label="Jacksonville's rank among cities under 4 million: ${H.years.map((yr, i) => `${ord(H.overall[i])} of ${H.n[i]} in ${yr}`).join(", ")}. Lower is better; the dashed line marks 50th.">`;
-  [1, 50, 100, 140].forEach(t => { g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${y(t)}" y2="${y(t)}" stroke="${cssv(t === 50 ? "--accent" : "--rule-soft")}" ${t === 50 ? 'stroke-dasharray="5 4" stroke-width="1.5"' : ""}/><text x="${m.l - 6}" y="${y(t) + 4}" text-anchor="end">${t}</text>`; });
-  g += `<text x="${Wd - m.r}" y="${y(50) - 6}" text-anchor="end" style="fill:${cssv("--accent")};font-weight:700">Top 50 line</text>`;
-  g += `<path d="${H.overall.map((v, i) => (i ? "L" : "M") + x(i) + " " + y(v)).join("")}" fill="none" stroke="${cssv("--jax-bright")}" stroke-width="3.5"/>`;
-  H.overall.forEach((v, i) => { g += `<circle cx="${x(i)}" cy="${y(v)}" r="5.5" fill="${cssv("--jax-bright")}" stroke="#FFFFFF" stroke-width="2"/><text x="${x(i)}" y="${y(v) + 22}" text-anchor="middle" style="fill:${cssv("--jax")};font-weight:700">${ord(v)}</text><text x="${x(i)}" y="${Hd - 10}" text-anchor="middle">${H.years[i]} (of ${H.n[i]})</text>`; });
-  box.innerHTML = `<p class="pnote" style="margin:0 0 4px"><b>Rank among cities under 4 million</b> (lower is better)</p>` + g + "</svg>"; })();
-document.getElementById("pcards").innerHTML = [["Overall", H.overall, H.all, true]].concat(P.map(p => [PNAME[p], H.pil[p], H.allPil[p], false])).map(([t, r, all, ov]) =>
-  `<div class="pcard${ov ? " ov" : ""}"><div class="t">${t}</div><div class="rk num">${r.slice(0, -1).join(" → ")} → <b>${r[r.length - 1]}</b></div><div class="mv ${r[1] > r[2] ? "up" : r[1] < r[2] ? "dn" : ""}">${r[1] === r[2] ? "Same as 2025" : (r[1] > r[2] ? "Up " : "Down ") + Math.abs(r[1] - r[2]) + " since 2025"}</div></div>`).join("");
-(function movers(){ const rows = Object.keys(PJ.ind).filter(k => PJ.ind[k][1] != null && PJ.ind[k][2] != null).map(k => ({k, a: PJ.ind[k][1], b: PJ.ind[k][2], d: PJ.ind[k][2] - PJ.ind[k][1]}));
-  const tb = (list, id) => document.getElementById(id).innerHTML = `<thead><tr><th scope="col">Measure</th><th scope="col" class="n">2025</th><th scope="col" class="n">2026</th><th scope="col" class="n">Change</th></tr></thead><tbody>` + list.map(o => `<tr><td>${INAME[o.k]}${MNOTE[o.k] ? `<span class="mtag">${MNOTE[o.k]}</span>` : ""}</td><td class="n">${o.a.toFixed(1)}</td><td class="n">${o.b.toFixed(1)}</td><td class="n"><span class="${o.d > 0 ? "up" : "dn"}">${o.d > 0 ? "+" : "−"}${Math.abs(o.d).toFixed(1)}</span></td></tr>`).join("") + `</tbody>`;
-  tb(rows.slice().sort((p, q) => q.d - p.d).slice(0, 5), "upT"); tb(rows.slice().sort((p, q) => p.d - q.d).slice(0, 5), "dnT"); })();
-/* ===================== part 2: tiles ===================== */
-(function tiles(){ const u4 = C.map((c, k) => k).filter(k => C[k].u4 && k !== JI);
-  const rk = k => 1 + u4.filter(j => S0[k][j] > S0[k][JI] + 1e-9).length, half = Math.round(NU4 / 2);
-    document.getElementById("tiles").innerHTML = P.map(p => `<div class="tgroup"><h3>${PNAME[p]}</h3><div class="tiles">${IND.filter(i => i.p === p).map(i => { const r = rk(i.k);
-    return `<div class="tile"><span class="n">${INAME[i.k]}</span><span class="r"><b>${ord(r)}</b></span></div>`; }).join("")}</div></div>`).join(""); })();
-/* ===================== part 3: priorities chart ===================== */
-function prioChart(){ const box = document.getElementById("prioChart"), Wd = Math.max(320, Math.min(1000, box.clientWidth || 800)), narrow = Wd < 560, rowH = 34, lab = narrow ? 150 : 210, Hd = PRIO.length * rowH + 30;
-  const mx = PRIO[0].dt, x = v => lab + v / mx * (Wd - lab - (narrow ? 120 : 170));
-  let g = `<svg viewBox="0 0 ${Wd} ${Hd}" role="img" aria-label="Overall score gain when each local lever closes half its gap to the Top 50 typical value, alone. ${PRIO.slice(0, 5).map((p, i) => `${i + 1}: ${p.L.label}, +${p.dt.toFixed(2)} points`).join("; ")}.">`;
-  PRIO.forEach((p, i) => { const yy = 10 + i * rowH, col = i < 3 ? cssv("--accent") : i < 5 ? cssv("--accent-mid") : cssv("--dot");
-    g += `<text x="${lab - 8}" y="${yy + 15}" text-anchor="end" style="fill:${cssv("--ink")};font-weight:${i < 5 ? 700 : 400}">${i + 1}. ${p.L.label}</text><rect x="${lab}" y="${yy + 3}" width="${Math.max(2, x(p.dt) - lab)}" height="18" rx="3" fill="${col}"/><text x="${x(p.dt) + 6}" y="${yy + 16}">+${p.dt.toFixed(2)} pts · ${p.dr > 0 ? "▲" + p.dr : "no change in rank"}</text>`; });
-  box.innerHTML = g + "</svg>";
-  const ahead = LV.filter(L => L.ctrl === "L" && L.ahead).map(L => L.label);
-  document.getElementById("prioNote").innerHTML = `Bars show the gain in the overall score (0 to 100) from closing half the gap alone; ▲ is places gained among cities under 4 million. The top three are the primary levers; #4 and #5 complete the demo scenario. Left out because Jacksonville already beats the Top 50 typical value: ${listJoin(ahead)}. Closing half the gap is a common yardstick, not a judgment that each change is equally easy.`; }
-prioChart();
-let prT = null; window.addEventListener("resize", () => { clearTimeout(prT); prT = setTimeout(prioChart, 150); });
-/* ===================== part 5: action cards ===================== */
-document.getElementById("acts").innerHTML = P3.map((k, i) => { const L = LVk[k], ex = RL[k] && RL[k].ex;
-  return `<div class="act"><h3>${L.label}<span class="prio">${i < 3 ? "Priority " + (i + 1) : "Demo lever " + (i + 1)}</span></h3><p>${L.idea}</p>${ex ? `<p><b>Example: ${ex.city}.</b> ${ex.text} <a href="${ex.url}" target="_blank" rel="noopener">Source<span class="visually-hidden">: ${ex.src} (opens in a new tab)</span></a>${ex.url2 ? `, <a href="${ex.url2}" target="_blank" rel="noopener">second source<span class="visually-hidden">: ${ex.src2} (opens in a new tab)</span></a>` : ""}</p>` : `<p><span class="pending">Pending:</span> a sourced example from another city.</p>`}</div>`; }).join("");
-window.__check = () => ({base: BASE, nU4: NU4, usTop: USTOP.length, p5: P5, demo: rankWith(Object.fromEntries(P5.map(k => [k, scoreDelta(LVk[k], .5)]))),
-  allLocalHalf: rankWith(Object.fromEntries(LV.filter(L => L.ctrl === "L").map(L => [L.k, scoreDelta(L, .5)]))),
-  half3: rankWith(Object.fromEntries(["rec", "crime", "ineq"].map(k => [k, scoreDelta(LVk[k], .5)]))), full3: rankWith(Object.fromEntries(["rec", "crime", "ineq"].map(k => [k, scoreDelta(LVk[k], 1)]))),
-  gdp_size: [0.5, 1].map(f => { const d = scoreDelta(LVk.gdp_size, f), e = evalD({gdp_size: d}); return {f, val: valAt(LVk.gdp_size, f), dScore: +d.toFixed(3), dTot: +(e.t - B.t).toFixed(4), r: e.r}; }),
-  gdp_growth: [0.5, 1].map(f => { const d = scoreDelta(LVk.gdp_growth, f), e = evalD({gdp_growth: d}); return {f, val: valAt(LVk.gdp_growth, f), dScore: +d.toFixed(3), dTot: +(e.t - B.t).toFixed(4), r: e.r}; }),
-  prio: PRIO.map(p => [p.L.k, +p.dt.toFixed(3), p.dr])});
+
+/* ===================== 1: progress ===================== */
+const Hh = D.u4h;
+document.getElementById("upN").textContent = Hh.overall[1] - Hh.overall[2];
+(function rankChart(){ const box = document.getElementById("rankChart"), Wd = Math.max(300, Math.min(640, box.clientWidth || 560)), Hd = 260, m = {l: 40, r: 120, t: 18, b: 34};
+  const y = d3.scaleLinear().domain([1, 140]).range([m.t, Hd - m.b]), x = i => m.l + 24 + i * (Wd - m.l - m.r - 48) / 2;
+  let g = `<svg viewBox="0 0 ${Wd} ${Hd}" role="img" aria-label="Jacksonville's rank among cities under 4 million: ${Hh.years.map((yr, i) => `${ord(Hh.overall[i])} in ${yr}`).join(", ")}. ${Hh.overall[2] - 50} places from the Top 50.">`;
+  [1, 50, 100, 140].forEach(t => { g += `<line x1="${m.l}" x2="${Wd - m.r + 10}" y1="${y(t)}" y2="${y(t)}" stroke="${cssv(t === 50 ? "--accent-mid" : "--rule-soft")}" ${t === 50 ? 'stroke-dasharray="6 5" stroke-width="2"' : ""}/><text x="${m.l - 6}" y="${y(t) + 4}" text-anchor="end">${t}</text>`; });
+  g += `<text x="${m.l + 4}" y="${y(50) - 7}" style="fill:${cssv("--accent")};font-weight:700">Top 50</text>`;
+  const xe = x(2) + 18; g += `<path d="M${xe} ${y(50)}H${xe + 8}V${y(Hh.overall[2])}H${xe}" fill="none" stroke="${cssv("--ink-2")}" stroke-width="1.5"/><text x="${xe + 14}" y="${(y(50) + y(Hh.overall[2])) / 2 + 5}" style="fill:${cssv("--ink")};font-weight:700">${Hh.overall[2] - 50} to go</text>`;
+  g += `<path d="${Hh.overall.map((v, i) => (i ? "L" : "M") + x(i) + " " + y(v)).join("")}" fill="none" stroke="${cssv("--jax-bright")}" stroke-width="3.5"/>`;
+  Hh.overall.forEach((v, i) => { g += `<circle cx="${x(i)}" cy="${y(v)}" r="5.5" fill="${cssv("--jax-bright")}" stroke="#FFFFFF" stroke-width="2"/><text x="${x(i)}" y="${y(v) + 22}" text-anchor="middle" style="fill:${cssv("--jax")};font-weight:700">${ord(v)}</text><text x="${x(i)}" y="${Hd - 10}" text-anchor="middle">${Hh.years[i]}</text>`; });
+  box.innerHTML = `<p class="pnote" style="margin:0 0 4px"><b>Rank among cities under 4 million</b></p>` + g + "</svg>"; })();
+(function gains(){
+  const PILK = {econ: "Economy", hc: "Talent", qol: "Quality of life", env: "Environment", gov: "Governance"};
+  const rows = Object.keys(PJ.ind).filter(k => PJ.ind[k][1] != null && PJ.ind[k][2] != null).map(k => ({k, a: PJ.ind[k][1], b: PJ.ind[k][2], d: PJ.ind[k][2] - PJ.ind[k][1]}));
+  const pils = P.map(p => ({p, a: Hh.pil[p][1], b: Hh.pil[p][2]}));
+  function slope(list, up, Wd){ Wd = Math.max(300, Math.min(560, Wd || 520)); const Hd = 300, x0 = 62, x1 = Wd - 180, col = up ? cssv("--accent-mid") : "#B3262D", tcol = up ? cssv("--head") : "#8A161C";
+    const vals = list.flatMap(o => [o.a, o.b]).concat([50]); const lo = Math.max(1, Math.min(...vals) - 10), hi = Math.max(...vals) + 15;
+    const y = v => 40 + (v - lo) / (hi - lo) * (Hd - 70);
+    let g = `<svg viewBox="0 0 ${Wd} ${Hd}" role="img" aria-label="Category rank among cities under 4 million, 2025 to 2026: ${list.map(o => `${PILK[o.p]} ${ord(o.a)} to ${ord(o.b)}`).join("; ")}.">`;
+    g += `<text x="${x0}" y="18" text-anchor="middle" style="font-weight:700">2025</text><text x="${x1}" y="18" text-anchor="middle" style="font-weight:700;fill:${cssv("--deep")}">2026</text>`;
+    g += `<line x1="${x0}" x2="${x0}" y1="28" y2="${Hd - 10}" stroke="${cssv("--rule-soft")}"/><line x1="${x1}" x2="${x1}" y1="28" y2="${Hd - 10}" stroke="${cssv("--rule-soft")}"/>`;
+    g += `<line x1="${x0 - 10}" x2="${x1 + 10}" y1="${y(50)}" y2="${y(50)}" stroke="${cssv("--accent-mid")}" stroke-dasharray="6 5" stroke-width="1.5"/><text x="${(x0 + x1) / 2}" y="${y(50) + 18}" text-anchor="middle" style="font-weight:700;letter-spacing:.08em;fill:${cssv("--deep")};font-size:12px">TOP 50</text>`;
+    const lab = list.map(o => ({o, ly: y(o.b)})).sort((p, q) => p.ly - q.ly); for (let i = 1; i < lab.length; i++) if (lab[i].ly - lab[i - 1].ly < 50) lab[i].ly = lab[i - 1].ly + 50;
+    list.forEach(o => { g += `<line x1="${x0}" y1="${y(o.a)}" x2="${x1}" y2="${y(o.b)}" stroke="${col}" stroke-opacity=".25" stroke-width="10" stroke-linecap="round"/><line x1="${x0}" y1="${y(o.a)}" x2="${x1}" y2="${y(o.b)}" stroke="${col}" stroke-width="3.5"/>`;
+      g += `<circle cx="${x0}" cy="${y(o.a)}" r="6" fill="#FFFFFF" stroke="${col}" stroke-width="2.5"/><text x="${x0 - 12}" y="${y(o.a) + 5}" text-anchor="end" style="font-weight:700">${ord(o.a)}</text>`;
+      g += `<circle cx="${x1}" cy="${y(o.b)}" r="11" fill="${col}" fill-opacity=".2"/><circle cx="${x1}" cy="${y(o.b)}" r="7" fill="${col}" stroke="#FFFFFF" stroke-width="2"/>`; });
+    lab.forEach(({o, ly}) => { g += `<text x="${x1 + 20}" y="${ly - 6}" style="fill:${cssv("--deep")};font-weight:600;font-size:14px">${PILK[o.p]}</text><text x="${x1 + 20}" y="${ly + 18}" style="fill:${cssv("--deep")};font-weight:700;font-size:22px">${ord(o.b)}<tspan dx="8" style="fill:${tcol};font-size:15px">${o.a > o.b ? "+" : "−"}${Math.abs(o.a - o.b)}</tspan></text>`; });
+    return g + "</svg>"; }
+  const VAL = k => { const L = LVk[k]; if (!L || /index/.test(L.unit) || L.unit === "firms" || /Gini/.test(L.unit)) return ""; const v = L.jax, t = k === "inc_pc" || k === "gdp_pc" ? "$" + Math.round(v * 1000).toLocaleString("en-US") : k === "gdp_size" ? "$" + Math.round(v) + " billion" : L.unit.startsWith("%") ? fmt(L, v) + L.unit : fmt(L, v) + " " + L.unit; return ` · 2026 value: <b>${t}</b>`; };
+  function track(o, up){ const col = up ? cssv("--accent-mid") : "#B3262D", x = v => 6 + v / 100 * 988, a = x(o.a), b = x(o.b), dir = b >= a ? 1 : -1;
+    return `<svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><line x1="6" x2="994" y1="9" y2="9" stroke="${cssv("--rule-soft")}" stroke-width="3"/><line x1="500" x2="500" y1="3" y2="15" stroke="${cssv("--rule")}" stroke-width="2"/><line x1="${a}" x2="${b - dir * 14}" y1="9" y2="9" stroke="${col}" stroke-width="4"/><path d="M${b} 9 L${b - dir * 16} 2 L${b - dir * 16} 16 Z" fill="${col}"/><circle cx="${a}" cy="9" r="5" fill="#FFFFFF" stroke="${cssv("--ink-2")}" stroke-width="2.5"/></svg>`; }
+  const irow = (o, up) => `<div class="irow"><div><span class="nm">${INAME[o.k]}</span><span class="tg">${PILK[PG.pillarsOf[o.k]] || ""}</span></div><span class="big">${o.d > 0 ? "+" : "−"}${Math.abs(Math.round(o.d))}</span><div class="ds">${DESC[o.k][0].toUpperCase() + DESC[o.k].slice(1)}${VAL(o.k)}</div><div class="sc">Score ${Math.round(o.a)} → ${Math.round(o.b)}</div>${MNOTE[o.k] ? `<div class="fl">${MNOTE[o.k]}</div>` : ""}${track(o, up)}</div>`;
+  const yr = Hh.years[2], arrUp = `<svg class="arr" viewBox="0 0 27 16" aria-hidden="true"><path d="M2 14 L13.5 3 L25 14" fill="none" stroke="${cssv("--accent-mid")}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`, arrDn = `<svg class="arr" viewBox="0 0 27 16" aria-hidden="true"><path d="M2 2 L13.5 13 L25 2" fill="none" stroke="#B3262D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const block = (up) => { const pl = pils.filter(o => up ? o.b < o.a : o.b > o.a), il = rows.slice().sort((p, q) => up ? q.d - p.d : p.d - q.d).slice(0, 5);
+    return `${up ? arrUp : arrDn}<h3>Where did we <em>${up ? "gain" : "drop"}</em> in ${yr}?</h3><div class="gcols"><div><div class="glab">Oxford category rank <span class="pill">${Hh.years[1]} → ${yr}</span></div><p class="gsub">Categories where Jacksonville moved ${up ? "up" : "down"} among ${Hh.n[2]} cities.</p><div class="slope" data-up="${up ? 1 : 0}"></div></div><div><div class="glab">Indicator scores <span class="pill">0–100</span></div><p class="gsub">The five indicators with the biggest score ${up ? "gains" : "drops"}.</p>${il.map(o => irow(o, up)).join("")}<div class="iaxis" aria-hidden="true"><span>0</span><span>50</span><span>100</span></div></div></div>`; };
+  document.getElementById("gainBlock").innerHTML = block(true);
+  document.getElementById("dropBlock").innerHTML = block(false);
+  const drawSlopes = () => document.querySelectorAll(".slope").forEach(el => { const up = el.dataset.up === "1"; el.innerHTML = slope(pils.filter(o => up ? o.b < o.a : o.b > o.a), up, el.clientWidth); });
+  drawSlopes(); let sT = null; window.addEventListener("resize", () => { clearTimeout(sT); sT = setTimeout(drawSlopes, 150); });
+})();
+/* ===================== 2: priorities ===================== */
+(function leverMap(){
+  const top = PRIO.slice(0, 5);
+  /* d = direct indicator; a = indirect, long-term effect (Connor, Oct 23) */
+  const AREAS = [
+    {n: "Parks and Green Spaces", c: "#0E8A5C", cs: "#DDF3EA", icon: '<path d="M20 34V22M20 22l-5-4M20 26l5-4" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round"/><circle cx="20" cy="15" r="9" stroke="currentColor" stroke-width="2.6" fill="none"/><path d="M13 34h14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>', links: {rec: "d", crime: "a"}},
+    {n: "Workforce Development", c: "#1F6F99", cs: "#DDEBF3", icon: '<rect x="5" y="12" width="30" height="21" rx="3" stroke="currentColor" stroke-width="2.6" fill="none"/><path d="M15 12V8h10v4M5 20h30" stroke="currentColor" stroke-width="2.6" fill="none"/><rect x="18" y="18" width="4" height="5" fill="currentColor"/>', links: {ineq: "d", crime: "a", univ: "a", emp_growth: "a"}},
+    {n: "Early Childhood Education", c: "#9A6700", cs: "#F8EBCF", icon: '<rect x="14" y="5" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="2.6" fill="none"/><rect x="6" y="20" width="12" height="13" rx="1.5" stroke="currentColor" stroke-width="2.6" fill="none"/><rect x="22" y="20" width="12" height="13" rx="1.5" stroke="currentColor" stroke-width="2.6" fill="none"/>', links: {emp_growth: "a", ineq: "a", univ: "a"}}];
+  const map = document.getElementById("leverMap"), btns = document.getElementById("areaBtns");
+  btns.innerHTML = AREAS.map((A, i) => `<button type="button" class="abtn" data-i="${i}" aria-pressed="false" style="--c:${A.c};--cs:${A.cs}"><svg viewBox="0 0 40 40" aria-hidden="true" style="color:${A.c}">${A.icon}</svg>${A.n}</button>`).join("");
+  document.getElementById("mapText").innerHTML = AREAS.map(A => `<li>${A.n}: ${Object.entries(A.links).map(([k, t]) => `${LVk[k].label} (${t === "d" ? "direct" : "indirect, long-term"})`).join(", ")}</li>`).join("");
+  let SEL = -1;
+  function draw(){
+    const Wd = Math.max(320, Math.min(1240, map.clientWidth || 1000)), narrow = Wd < 720;
+    const cw = Wd / 5, colX = i => cw * (i + .5), maxH = narrow ? 80 : 170, base = narrow ? 220 : 430, Hd = base + (narrow ? 120 : 170), mx = top[0].dt;
+    const cardY = Hd - 4, cardW = Wd / 3, cardX = i => cardW * (i + .5);
+    let g = `<svg viewBox="0 0 ${Wd} ${Hd}" class="lmap${SEL >= 0 ? " sel" : ""}" role="img" aria-label="Top five levers with the gain each would bring, and lines linking each JCC target area to the levers it moves. The same links are listed in text below.">`;
+    g += `<defs><linearGradient id="agr" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="${cssv("--accent-mid")}" stop-opacity=".25"/><stop offset="1" stop-color="${cssv("--accent-mid")}"/></linearGradient></defs>`;
+    const on = (k) => SEL >= 0 && AREAS[SEL].links[k];
+    top.forEach((p, i) => { const x = colX(i), h = Math.max(30, p.dt / mx * maxH), ty = base - h, k = p.L.k, fs = narrow ? 11 : 15;
+      const nm = narrow ? p.L.label.replace("Arts, parks and culture", "Arts & parks") : p.L.label;
+      g += `<g class="col${on(k) ? " on" : ""}">`;
+      if (narrow) { const SH = {rec: ["Arts and", "parks"], ineq: ["Shared", "prosperity"], crime: ["Public", "safety"], univ: ["Univer-", "sities"], emp_growth: ["Job", "growth"]}; (SH[k] || [nm]).forEach((ln, j) => { g += `<text x="${x}" y="${16 + j * 15}" text-anchor="middle" style="fill:${cssv("--deep")};font-weight:700;font-size:12.5px">${ln}</text>`; }); }
+      else g += `<text x="${x}" y="30" text-anchor="middle" style="fill:${cssv("--deep")};font-weight:700;font-size:19px">${nm}</text>`;
+      if (!narrow) { const words = DESC[k][0].toUpperCase() + DESC[k].slice(1).split(";")[0]; const parts = words.match(/.{1,26}(\s|$)/g) || [words]; parts.slice(0, 3).forEach((ln, j) => { g += `<text x="${x}" y="${56 + j * 19}" text-anchor="middle" style="fill:${cssv("--ink-2")};font-size:14px">${ln.trim()}</text>`; }); }
+      g += `<text x="${x}" y="${ty - (narrow ? 38 : 62)}" text-anchor="middle" style="fill:${cssv("--head")};font-weight:700;font-size:${narrow ? 15 : 30}px">+${p.dt.toFixed(2)}</text>`;
+      g += `<text x="${x}" y="${ty - (narrow ? 26 : 42)}" text-anchor="middle" style="fill:${cssv("--deep")};font-weight:600;font-size:${fs - 2}px">score pts</text>`;
+      g += `<text x="${x}" y="${ty - (narrow ? 10 : 14)}" text-anchor="middle" style="fill:${cssv("--deep")};font-weight:700;font-size:${fs + (narrow ? 0 : 2)}px">▲${p.dr} ranks</text>`;
+      const sw = narrow ? 12 : 22, hw = narrow ? 20 : 34, hh = narrow ? 16 : 26;
+      g += `<path d="M${x - sw / 2} ${base} V${ty + hh} H${x - hw} L${x} ${ty} L${x + hw} ${ty + hh} H${x + sw / 2} V${base} Z" fill="url(#agr)" class="ar"/>`;
+      g += `<line x1="${x - cw * .42}" x2="${x + cw * .42}" y1="${base}" y2="${base}" stroke="${cssv("--rule")}" stroke-width="2"/></g>`; });
+    /* connectors */
+    AREAS.forEach((A, ai) => { const ks = Object.keys(A.links); ks.forEach((k, li) => { const ci = top.findIndex(p => p.L.k === k); if (ci < 0) return;
+      const nIn = AREAS.filter(B => B.links[k]).length, slot = AREAS.filter((B, bi) => B.links[k] && bi < ai).length;
+      const ex = colX(ci) + (slot - (nIn - 1) / 2) * (narrow ? 10 : 18), ey = base + 14;
+      const sx = cardX(ai) + (li - (ks.length - 1) / 2) * (narrow ? 14 : 34), sy = cardY;
+      const solid = A.links[k] === "d", my = (ey + sy) / 2;
+      g += `<g class="lk${SEL === ai ? " on" : ""}"><path d="M${sx} ${sy} C${sx} ${my}, ${ex} ${my}, ${ex} ${ey + 8}" fill="none" stroke="${A.c}" stroke-width="${solid ? 3.5 : 2.6}" ${solid ? "" : 'stroke-dasharray="1 7" stroke-linecap="round"'}/><path d="M${ex} ${ey - 2} l-6 10 h12 Z" fill="${A.c}"/><circle cx="${sx}" cy="${sy}" r="4" fill="${A.c}"/></g>`; }); });
+    map.innerHTML = g + "</svg>";
+  }
+  btns.addEventListener("click", e => { const b = e.target.closest(".abtn"); if (!b) return; const i = +b.dataset.i; SEL = SEL === i ? -1 : i;
+    btns.querySelectorAll(".abtn").forEach(x => x.setAttribute("aria-pressed", +x.dataset.i === SEL)); draw(); });
+  draw(); let mT = null; window.addEventListener("resize", () => { clearTimeout(mT); mT = setTimeout(draw, 150); });
+})();
+/* ===================== 3: action ===================== */
+document.getElementById("actAreas").innerHTML = ["Parks and Green Spaces", "Workforce Development", "Early Childhood Education"].map(n => `<li><a href="https://jax365.org/focus-areas/">${n}</a></li>`).join("");
+document.getElementById("actLevers").innerHTML = P3.map(k => { const L = LVk[k], ex = RL[k] && RL[k].ex; return `<li><b>${L.label}:</b> ${L.idea}${ex ? ` See <a href="${ex.url}">${ex.city}</a>.` : ""}</li>`; }).join("");
+window.__check = () => ({base: BASE, nU4: NU4, usTop: USTOP.length, p5: P5, demo: rankWith(Object.fromEntries(P5.map(k => [k, scoreDelta(LVk[k], .5)]))), half3: rankWith(Object.fromEntries(["rec", "crime", "ineq"].map(k => [k, scoreDelta(LVk[k], .5)]))), full3: rankWith(Object.fromEntries(["rec", "crime", "ineq"].map(k => [k, scoreDelta(LVk[k], 1)])))});
 })();
 </script>
