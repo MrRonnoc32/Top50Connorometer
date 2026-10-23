@@ -6,7 +6,7 @@
 <title>Path to the Top 50</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Mono:wght@500;600&family=Public+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&family=Zilla+Slab:wght@300;400&display=swap">
 <style>
 /* Layout: a sticky globe that turns as story steps scroll past, then a full-width "97th" moment with a 845-city rank strip,
    then the calculator (levers left, sticky rank panel right; stacks on phones).
@@ -14,12 +14,17 @@
 :root{
   color-scheme: light;
   --bg:#F3F6F6; --surface:#FFFFFF; --tint:#E3ECEE; --ocean:#E6EEF0; --land:#C9D6D9;
-  --ink:#0E2226; --ink-2:#33474C; --rule:#B9C8CB; --rule-soft:#DCE5E7;
-  --accent:#084C57; --accent-mid:#2F7480; --accent-soft:#CFE3E7; --dot:#7E979C;
+  /* JCC style guide colors. Text uses only pairs at 7:1 or better; JCC Teal (4.35:1 on white) is kept to bars, lines and fills. */
+  --ink:#3D4142; --ink-2:#33474C; --rule:#B9C8CB; --rule-soft:#DCE5E7;
+  --head:#00666E; /* Darker Teal: 6.7:1, used only for large headings (AAA large text needs 4.5:1) */
+  --deep:#053A40; /* Darkest Teal */ --hi:#00E6A5; /* Highlight: only on Darkest Teal (7.6:1) */
+  --accent:#053A40; --accent-mid:#208591; --accent-soft:#CFE3E7; --dot:#7E979C;
   --jax:#7A3D00; --jax-bright:#C25A0E; --jax-soft:#F5E4D4;
   --good:#12542A;
-  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
-  --f-body:"Public Sans","Segoe UI",Roboto,Arial,sans-serif;
+  /* Free stand-ins for the JCC brand fonts (TT Commons Pro, Sentinel), whose desktop licenses don't allow web use */
+  --f-display:"Figtree","Segoe UI",Roboto,Arial,sans-serif;
+  --f-body:"Figtree","Segoe UI",Roboto,Arial,sans-serif;
+  --f-serif:"Zilla Slab",Georgia,"Times New Roman",serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 *{box-sizing:border-box}
@@ -237,7 +242,7 @@ details.alln summary{min-height:44px;display:flex;align-items:center;font-weight
 .part > header h2{font-size:clamp(1.9rem,4vw,2.8rem);margin:6px 0 10px}
 .part > header p+p{margin-top:8px}
 .obs{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:2px 8px;margin-left:8px;vertical-align:middle}
-.obs.o{background:#E3ECEE;color:#0E2226}.obs.m{background:var(--jax-soft);color:var(--jax)}
+.obs.o{background:#E3ECEE;color:#0E2226}.obs.m{background:var(--jax-soft);color:#5E2F00}
 .headline{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px 32px;align-items:start;margin-bottom:22px}
 @media (max-width:860px){.headline{grid-template-columns:minmax(0,1fr)}}
 #rankChart svg{width:100%;height:auto;display:block}
@@ -288,6 +293,25 @@ details.alln summary{min-height:44px;display:flex;align-items:center;font-weight
 .act a{color:var(--accent);font-weight:600}
 .cta{margin-top:20px;background:var(--ink);color:#FFFFFF;border-radius:14px;padding:20px 22px}
 .cta h3{font-size:1.4rem;font-weight:800;margin-bottom:6px}
+
+/* ---------- JCC brand (Oct 23) ---------- */
+h1,h2,h3{font-weight:700!important;font-stretch:normal!important;letter-spacing:0!important}
+.step h1,.step h2,.moment h2,.part > header h2,.calc > header h2,.prog > header h2,.explain h2{color:var(--head);line-height:1.1}
+.step h1 em{color:var(--deep)}
+.big97,.rank{font-weight:700!important;font-stretch:normal!important}
+.step > p,.part > header > p,.calc > header > p,.moment p:not(.q){font-family:var(--f-serif);font-weight:300;font-size:1.15rem;line-height:1.55;color:var(--ink)}
+.pnote,.sitefoot,.xsrc,.flagline,.real .ex{font-family:var(--f-serif);font-weight:400}
+.moment .q{color:var(--head)}
+.panel{background:var(--deep)}
+.meter{background:#0E5560}
+.meter .fill,.rank.in{background:none}
+.meter .fill{background:var(--hi)}
+.rank.in{color:var(--hi)}
+.pbtn:hover,.strip .btn:hover{background:#0B4C53}
+.cbtn{border-radius:8px;border-color:var(--head)}
+.cbtn.solid{background:var(--deep);border-color:var(--deep)}
+.cta{background:var(--deep)}
+.ptab[aria-selected="true"],.seg button[aria-pressed="true"],.fbtn[aria-pressed="true"]{background:var(--deep);border-color:var(--deep)}
 </style>
 <style>body{margin:0}[hidden]{display:none!important}</style>
 </head>
@@ -558,7 +582,7 @@ function draw(){
   }
   ctx.globalAlpha = 1;
   /* cities to watch */
-  if (fade.watch > 0.02) { ctx.font = `700 ${Math.round(12 * R + 3)}px "Public Sans", Arial, sans-serif`; ctx.textBaseline = "middle";
+  if (fade.watch > 0.02) { ctx.font = `700 ${Math.round(12 * R + 3)}px Figtree, Arial, sans-serif`; ctx.textBaseline = "middle";
     for (const k of WATCH) { if (k === JI) continue; const c = C[k]; if (d3.geoDistance(c.xy, center) > 1.4) continue; const p = proj(c.xy);
       ctx.globalAlpha = fade.watch; ctx.strokeStyle = cssv("--jax-bright"); ctx.lineWidth = 2.5; ctx.beginPath(); ctx.arc(p[0], p[1], 6 * R, 0, 6.2832); ctx.stroke();
       const w = ctx.measureText(c.n).width; ctx.fillStyle = "rgba(255,255,255,0.92)"; ctx.fillRect(p[0] + 9 * R - 3, p[1] - 9, w + 6, 18); ctx.fillStyle = cssv("--jax"); ctx.fillText(c.n, p[0] + 9 * R, p[1]); }
@@ -570,7 +594,7 @@ function draw(){
     ctx.globalAlpha = fade.jax * (0.35 - 0.25 * pulse); ctx.fillStyle = cssv("--jax-bright"); ctx.beginPath(); ctx.arc(p[0], p[1], (14 + 10 * pulse) * R, 0, 6.2832); ctx.fill();
     ctx.globalAlpha = fade.jax; ctx.beginPath(); ctx.arc(p[0], p[1], 6.5 * R, 0, 6.2832); ctx.fill();
     ctx.strokeStyle = "#FFFFFF"; ctx.lineWidth = 2; ctx.stroke();
-    ctx.font = `800 ${Math.round(17 * R + 4)}px Archivo, Arial, sans-serif`; ctx.textBaseline = "middle";
+    ctx.font = `700 ${Math.round(17 * R + 4)}px Figtree, Arial, sans-serif`; ctx.textBaseline = "middle";
     const label = "Jacksonville", tx = p[0] + 14 * R, ty = p[1] - 18 * R, w = ctx.measureText(label).width;
     ctx.fillStyle = "rgba(255,255,255,0.92)"; ctx.fillRect(tx - 6, ty - 13 * R - 2, w + 12, 26 * R + 4);
     ctx.fillStyle = cssv("--jax"); ctx.fillText(label, tx, ty);
