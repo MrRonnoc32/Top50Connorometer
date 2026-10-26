@@ -18,6 +18,20 @@ watch = []
 for n, c in WATCH:
     k = [i for i, x in enumerate(D["cities"]) if x["n"] == n and x["c"] == c]; assert len(k) == 1, n
     watch.append(k[0])
-S["u4h"] = u4h; S["watch"] = watch
+# Jacksonville's raw values by edition, in the page's display units (housing as %, GDP in US$ billions)
+KEY = {"GDP size":"gdp_size","GDP growth":"gdp_growth","Economic stability":"econ_stab","GDP per person":"gdp_pc","Employment growth":"emp_growth",
+ "Economic diversity":"econ_div","Population growth":"pop_growth","Age profile":"age","Universities":"univ","Corporate HQs":"hq",
+ "Educational attainment":"edu","Foreign-born population":"foreign","Income equality":"ineq","Income per person":"inc_pc",
+ "Housing expenditure":"housing","Life expectancy":"life","Crime rate":"crime","Recreation & cultural sites":"rec","Air quality":"air",
+ "Emissions intensity":"emis","Natural disasters":"disaster","Temperature anomalies":"temp","Rainfall anomalies":"rain",
+ "Institutions":"inst","Political stability":"polstab","Business environment":"busenv","Civil liberties":"civlib"}
+SCALE = {"housing": 100, "gdp_size": 0.001}
+jraw = {}
+for yi, y in enumerate(u4h["years"]):
+    s_, r_, raw, g_ = load(y); row = raw[raw.Code == "USM37"].iloc[0]
+    for col, k in KEY.items():
+        jraw.setdefault(k, [None, None, None])
+        if col in raw.columns and pd.notna(row[col]): jraw[k][yi] = float(row[col]) * SCALE.get(k, 1)
+S["u4h"] = u4h; S["watch"] = watch; S["jaxRaw"] = jraw
 json.dump(S, open("story_data.json", "w"), separators=(",", ":"), ensure_ascii=False)
 print(u4h); print([(S["cities"][k]["n"], S["cities"][k]["r"], S["cities"][k]["o"][2], S["cities"][k]["u4"]) for k in watch])

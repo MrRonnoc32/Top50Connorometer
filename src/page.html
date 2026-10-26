@@ -856,7 +856,7 @@ document.addEventListener("keydown", e => { if (e.key === "Escape" && !xPanel.hi
 const PG = D.prog, YRS = PG.years, PC = PG.cities, PJ = PC[0];
 const PNAME = {econ: "Economy", hc: "Talent", qol: "Quality of life", env: "Environment", gov: "Governance"};
 const INAME = Object.fromEntries(LV.map(L => [L.k, L.label])); INAME.internet = "Internet speed";
-const MNOTE = {gdp_growth: "Growth formula changed in 2026", emp_growth: "Growth formula changed in 2026", pop_growth: "Growth formula changed in 2026",
+const MNOTE = {econ_div: "Oxford changed this measure's scale in 2026", gdp_growth: "Growth formula changed in 2026", emp_growth: "Growth formula changed in 2026", pop_growth: "Growth formula changed in 2026",
   univ: "2026 list grew from about 2,500 to about 10,000 universities", hq: "2026 list grew from 2,000 to about 10,000 headquarters",
   rec: "2024 counted sites per resident only", temp: "Formula adjusted in 2026", rain: "Formula adjusted in 2026",
   crime: "Not in the 2024 edition; internet speed held this slot", internet: "2024 edition only; replaced by crime rate"};
@@ -958,10 +958,21 @@ rankChart(); let rcT = null; window.addEventListener("resize", () => { clearTime
       g += `<circle cx="${x1}" cy="${y(o.b)}" r="11" fill="${col}" fill-opacity=".2"/><circle cx="${x1}" cy="${y(o.b)}" r="7" fill="${col}" stroke="#FFFFFF" stroke-width="2"/>`; });
     lab.forEach(({o, ly}) => { g += `<text x="${x1 + 20}" y="${ly - 6}" style="fill:${cssv("--deep")};font-weight:600;font-size:14px">${PILK[o.p]}</text><text x="${x1 + 20}" y="${ly + 18}" style="fill:${cssv("--deep")};font-weight:700;font-size:22px">${ord(o.b)}<tspan dx="8" style="fill:${tcol};font-size:15px">${o.a > o.b ? "+" : "−"}${Math.abs(o.a - o.b)}</tspan></text>`; });
     return g + "</svg>"; }
-  const VAL = k => { const L = LVk[k]; if (!L || /index/.test(L.unit) || /std/.test(L.unit) || L.unit === "firms" || /Gini/.test(L.unit) || /GDP/.test(L.unit)) return ""; const v = L.jax, t = k === "inc_pc" || k === "gdp_pc" ? "$" + (Math.round(v) * 1000).toLocaleString("en-US") : k === "gdp_size" ? "$" + Math.round(v) + " billion" : L.unit.startsWith("%") ? fmt(L, v) + L.unit : fmt(L, v) + " " + L.unit; return ` · 2026 value: <b>${t}</b>`; };
+  const fmtV = (k, v) => { const L = LVk[k]; return k === "inc_pc" || k === "gdp_pc" ? "$" + (Math.round(v) * 1000).toLocaleString("en-US") : k === "gdp_size" ? "$" + Math.round(v) + " billion" : L.unit.startsWith("%") ? fmt(L, v) + "%" : fmt(L, v); };
+  const VAL = k => { const L = LVk[k]; if (!L || /index/.test(L.unit) || /std/.test(L.unit) || L.unit === "firms" || /Gini/.test(L.unit) || /GDP/.test(L.unit)) return ""; return ` · 2026 value: <b>${fmtV(k, L.jax).replace(/%$/, L.unit.replace(/^%/, "%"))}</b>`; };
+  /* what actually happened to the measure itself, in plain words */
+  const WORD = {ineq: ["more equal", "less equal"], housing: ["cheaper", "costlier"], emis: ["cleaner", "dirtier"]};
+  const rowDesc = o => { const L = LVk[o.k], jr = D.jaxRaw[o.k], a = jr && jr[1], b = jr && jr[2], d = DESC[o.k].split(";")[0], D0 = d[0].toUpperCase() + d.slice(1);
+    if (!L || MNOTE[o.k] || a == null || b == null) return D0 + VAL(o.k);
+    if (Math.abs(b - a) <= Math.abs(a) * 0.002) return `${D0} · Unchanged at <b>${fmtV(o.k, b)}</b>`;
+    const up = b > a, better = (L.dir > 0) === up;
+    let t = `${D0} · ${o.k === "ineq" ? "Gini " + (up ? "rose" : "fell") : up ? "Rose" : "Fell"} from <b>${fmtV(o.k, a)}</b> to <b>${fmtV(o.k, b)}</b>`;
+    if (L.dir < 0 && WORD[o.k]) t += ` (${better ? WORD[o.k][0] : WORD[o.k][1]})`;
+    if (better && o.d < 0) t += `; other cities improved faster`; else if (!better && o.d > 0) t += `; other cities slipped more`;
+    return t; };
   function track(o, up){ const col = up ? cssv("--accent-mid") : "#B3262D", x = v => 6 + v / 100 * 988, a = x(o.a), b = x(o.b), dir = b >= a ? 1 : -1;
     return `<svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><line x1="6" x2="994" y1="9" y2="9" stroke="${cssv("--rule-soft")}" stroke-width="3"/><line x1="500" x2="500" y1="3" y2="15" stroke="${cssv("--rule")}" stroke-width="2"/><line x1="${a}" x2="${b - dir * 14}" y1="9" y2="9" stroke="${col}" stroke-width="4"/><path d="M${b} 9 L${b - dir * 16} 2 L${b - dir * 16} 16 Z" fill="${col}"/><circle cx="${a}" cy="9" r="5" fill="#FFFFFF" stroke="${cssv("--ink-2")}" stroke-width="2.5"/></svg>`; }
-  const irow = (o, up) => `<div class="irow"><div><span class="nm">${INAME[o.k]}</span><span class="tg">${PILK[PG.pillarsOf[o.k]] || ""}</span></div><span class="big">${o.d > 0 ? "+" : "−"}${Math.abs(Math.round(o.d))}</span><div class="ds">${DESC[o.k][0].toUpperCase() + DESC[o.k].slice(1)}${VAL(o.k)}</div><div class="sc">Score ${Math.round(o.a)} → ${Math.round(o.b)}</div>${MNOTE[o.k] ? `<div class="fl">${MNOTE[o.k]}</div>` : ""}${track(o, up)}</div>`;
+  const irow = (o, up) => `<div class="irow"><div><span class="nm">${INAME[o.k]}</span><span class="tg">${PILK[PG.pillarsOf[o.k]] || ""}</span></div><span class="big">${o.d > 0 ? "+" : "−"}${Math.abs(Math.round(o.d))}</span><div class="ds">${rowDesc(o)}</div><div class="sc">Score ${Math.round(o.a)} → ${Math.round(o.b)}</div>${MNOTE[o.k] ? `<div class="fl">${MNOTE[o.k]}</div>` : ""}${track(o, up)}</div>`;
   const yr = Hh.years[2], arrUp = `<svg class="arr" viewBox="0 0 27 16" aria-hidden="true"><path d="M2 14 L13.5 3 L25 14" fill="none" stroke="${cssv("--accent-mid")}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`, arrDn = `<svg class="arr" viewBox="0 0 27 16" aria-hidden="true"><path d="M2 2 L13.5 13 L25 2" fill="none" stroke="#B3262D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const block = (up) => { const pl = pils.filter(o => up ? o.b < o.a : o.b > o.a), il = rows.slice().sort((p, q) => up ? q.d - p.d : p.d - q.d).slice(0, 5);
     return `${up ? arrUp : arrDn}<h3>Where did we <em>${up ? "gain" : "drop"}</em> in ${yr}?</h3><div class="gcols"><div><div class="glab">Category rank <span class="pill">${Hh.years[1]} → ${yr}</span></div><p class="gsub">Categories where Jacksonville moved ${up ? "up" : "down"} among ${Hh.n[2]} cities.</p><div class="slope" data-up="${up ? 1 : 0}"></div></div><div><div class="glab">Indicator scores <span class="pill">0–100</span></div><p class="gsub">The five biggest score ${up ? "gains" : "drops"} among measures local action can move.</p>${il.map(o => irow(o, up)).join("")}<div class="iaxis" aria-hidden="true"><span>0</span><span>50</span><span>100</span></div></div></div>`; };
