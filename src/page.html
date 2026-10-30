@@ -400,12 +400,31 @@ details.top50 ol{margin:6px 0 0;padding-left:2.2rem;columns:2;column-gap:20px;fo
 .act3 ul{margin:0;padding-left:1.1rem;font-size:.93rem}
 .act3 li{margin:.35rem 0}
 .act3 a{color:var(--accent);font-weight:600}
+
+/* ---------- texture background, white cards, arrow wipe (Oct 30) ---------- */
+html{background:#E9DCD2 url("__TEXTURE__") center/cover fixed no-repeat}
+body{background:transparent}
+.topbar,.moment,.part,.sitefoot{background:var(--surface);border-radius:18px;padding-inline:clamp(16px,3.5vw,44px)}
+.topbar{margin-top:16px}
+.moment,.part{margin-block:7vh;border-top:0}
+.moment{padding-block:8vh 6vh}
+.sitefoot{border-top:0;margin-block:7vh 16px;padding-block:18px}
+.step{opacity:1;border-color:var(--rule)}
+.step.on{border-color:var(--accent-mid)}
+.topbar .tright{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.motionbtn{min-height:44px;min-width:44px;font:inherit;font-size:.85rem;font-weight:700;color:var(--deep);background:var(--surface);border:1px solid var(--deep);border-radius:999px;padding:6px 14px;cursor:pointer}
+.motionbtn[aria-pressed="false"]{background:var(--tint)}
+@media (max-width:520px){.ptab{white-space:normal;flex:1 1 0;padding:8px 10px;line-height:1.2}}
+#wipe{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:50;display:block}
 </style>
 
 <div class="wrap">
   <div class="topbar">
     <span class="brand">JACKSONVILLE CIVIC COUNCIL</span>
-    <span class="badge" role="note">Oxford Economics Global Cities Index 2026</span>
+    <span class="tright">
+      <span class="badge" role="note">Oxford Economics Global Cities Index 2026</span>
+      <button type="button" class="motionbtn" id="motionBtn" aria-pressed="true">Animations on</button>
+    </span>
   </div>
 
   <section class="scrolly" aria-label="Jacksonville among the world's cities">
@@ -1029,5 +1048,82 @@ rankChart(); let rcT = null; window.addEventListener("resize", () => { clearTime
 document.getElementById("actAreas").innerHTML = ["Parks and Green Spaces", "Workforce Development", "Early Childhood Education"].map(n => `<li><a href="https://jax365.org/focus-areas/">${n}</a></li>`).join("");
 document.getElementById("actLevers").innerHTML = P3.map(k => { const L = LVk[k], ex = RL[k] && RL[k].ex; return `<li><b>${L.label}:</b> ${L.idea}${ex ? ` See <a href="${ex.url}">${ex.city}</a>.` : ""}</li>`; }).join("");
 window.__check = () => ({base: BASE, nU4: NU4, usTop: USTOP.length, p5: P5, demo: rankWith(Object.fromEntries(P5.map(k => [k, scoreDelta(LVk[k], .5)]))), half3: rankWith(Object.fromEntries(["rec", "crime", "ineq"].map(k => [k, scoreDelta(LVk[k], .5)]))), full3: rankWith(Object.fromEntries(["rec", "crime", "ineq"].map(k => [k, scoreDelta(LVk[k], 1)])))});
+})();
+</script>
+
+<canvas id="wipe" aria-hidden="true" width="0" height="0"></canvas>
+<script>
+/* Arrow wipe between sections: a band of the MAIN GRADIENT texture sweeps from bottom left to
+   top right, carrying a wave of the brand arrows. Skipped for reduced motion or when the reader
+   turns animations off (WCAG 2.3.3). No flashing: opacity only changes smoothly. */
+(function(){
+"use strict";
+const cv = document.getElementById("wipe"), btn = document.getElementById("motionBtn");
+if (!cv || !cv.getContext) return;
+const ctx = cv.getContext("2d"), RM = window.matchMedia("(prefers-reduced-motion: reduce)");
+let off = false;
+try { off = localStorage.getItem("jcc-motion") === "off"; } catch (e) {}
+function setBtn(){ btn.setAttribute("aria-pressed", String(!off)); btn.textContent = off ? "Animations off" : "Animations on"; }
+if (btn) { setBtn(); btn.addEventListener("click", () => { off = !off; setBtn(); try { localStorage.setItem("jcc-motion", off ? "off" : "on"); } catch (e) {} }); }
+
+const m = getComputedStyle(document.documentElement).backgroundImage.match(/url\(["']?(.*?)["']?\)/);
+const tex = new Image(); if (m) tex.src = m[1];
+
+/* One arrow from "Arrow Pattern on White.svg", in its own units (about 175 x 172). */
+const SEG = [[1.27, 8.99, 136.1, 8.99], [166.07, 37.45, 166.07, 172.29], [6.36, 165.93, 135.2, 37.09]];
+function arrow(cx, cy, size, a){
+  const k = size / 175;
+  ctx.save(); ctx.translate(cx - 88 * k, cy - 86 * k); ctx.scale(k, k);
+  ctx.globalAlpha = a; ctx.strokeStyle = "#FFFFFF"; ctx.lineWidth = 17.98; ctx.lineCap = "butt";
+  ctx.beginPath(); SEG.forEach(q => { ctx.moveTo(q[0], q[1]); ctx.lineTo(q[2], q[3]); }); ctx.stroke();
+  ctx.restore();
+}
+function cover(W, H){
+  if (!tex.complete || !tex.naturalWidth) { ctx.fillStyle = "#E9DCD2"; ctx.fillRect(0, 0, W, H); return; }
+  const r = Math.max(W / tex.naturalWidth, H / tex.naturalHeight), w = tex.naturalWidth * r, h = tex.naturalHeight * r;
+  ctx.drawImage(tex, (W - w) / 2, (H - h) / 2, w, h);
+}
+const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+let busy = false;
+function play(){
+  if (busy || off || RM.matches) return;
+  busy = true;
+  const dpr = Math.min(2, window.devicePixelRatio || 1), W = window.innerWidth, H = window.innerHeight;
+  cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+  const L = W + H, band = 0.45 * L, cell = Math.max(70, Math.min(130, W / 8)), DUR = 1500, t0 = performance.now();
+  /* u = x + (H - y) runs 0 at bottom left to W + H at top right. */
+  const line = (c, x) => [x, x + H - c];
+  function frame(now){
+    const k = Math.min(1, (now - t0) / DUR), front = -0.05 * L + ease(k) * (L + band + 0.1 * L), back = front - band;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    ctx.save(); ctx.beginPath();
+    const x1 = -H - 20, x2 = W + H + 20;
+    [line(back, x1), line(back, x2), line(front, x2), line(front, x1)].forEach((pt, i) => i ? ctx.lineTo(pt[0], pt[1]) : ctx.moveTo(pt[0], pt[1]));
+    ctx.closePath(); ctx.clip();
+    cover(W, H);
+    for (let y = cell / 2; y < H + cell; y += cell) for (let x = cell / 2; x < W + cell; x += cell) {
+      const u = x + H - y, rel = (front - u) / band;
+      if (rel <= 0 || rel >= 1) continue;
+      /* The wave: each arrow rises and falls as the band passes, with a ripple along the edge. */
+      const r = Math.min(1, Math.max(0, rel + 0.07 * Math.sin((x + y) / 140))), s = Math.sin(Math.PI * r);
+      const lift = s * cell * 0.14;
+      arrow(x + lift, y - lift, cell * (0.42 + 0.3 * s), 0.25 + 0.6 * s);
+    }
+    ctx.restore();
+    if (k < 1) requestAnimationFrame(frame);
+    else { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); busy = false; }
+  }
+  requestAnimationFrame(frame);
+}
+window.__wipe = play;
+
+/* Play once per section, when it enters from below while the reader scrolls down. */
+const seen = new Set(), born = performance.now();
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting || seen.has(e.target) || performance.now() - born < 800) return;
+  if (e.boundingClientRect.top <= 0) return;
+  seen.add(e.target); play();
+}), {rootMargin: "0px 0px -30% 0px"});
+document.querySelectorAll(".moment, #p1, #p3, #p5").forEach(el => io.observe(el));
 })();
 </script>

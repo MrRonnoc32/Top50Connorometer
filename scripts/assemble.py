@@ -2,6 +2,9 @@
 import os, sys
 root = sys.argv[1]
 s = open(os.path.join(root, "src/page.html")).read()
+import base64
+tex = "data:image/jpeg;base64," + base64.b64encode(open(os.path.join(root, "vendor/main-gradient.jpg"), "rb").read()).decode()
+s = s.replace("__TEXTURE__", tex)
 s = s.replace("__DATA__", open("story_data.json").read().replace("</", "<\\/")).replace("__LAND__", open(os.path.join(root, "vendor/land-110m.geo.json")).read())
 cdn = '<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>'
 assert cdn in s
