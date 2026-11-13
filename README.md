@@ -69,3 +69,7 @@ These agree with a second method (nearest-city lookup) to within 5 places.
 ## Contact
 
 Connor Oswald, Director of Research, Jacksonville Civic Council.
+
+## Offline use (iPad)
+
+`build.sh` runs `scripts/offline.py` last. It embeds the fonts (vendor/fonts, Fontsource, SIL Open Font License) and adds a service worker, a manifest and Home Screen icons to `docs/`. After that, the page makes no outside requests. To present without internet: open the site in Safari on the iPad, tap Share, then "Add to Home Screen," and open it once from the icon while online. It then works in airplane mode. After pushing a change, open the icon twice while online to pick up the new version.

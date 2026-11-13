@@ -15,4 +15,5 @@ python3 story_data.py      # story_data.json: what the page needs
 python3 story_extras.py    # adds under-4M ranks by edition and the cities to watch
 python3 assemble.py "$ROOT"
 mkdir -p "$ROOT/docs" && cp "$ROOT/dist/index.html" "$ROOT/docs/index.html" && touch "$ROOT/docs/.nojekyll"
+python3 "$ROOT/scripts/offline.py" "$ROOT"   # embed fonts, add service worker + Home Screen files (iPad offline use)
 echo "Done. dist/index.html and docs/index.html (the GitHub Pages copy) are updated."
